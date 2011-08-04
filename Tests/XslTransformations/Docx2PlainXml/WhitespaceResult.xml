@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <p> Text1 <i xml:space="preserve">Text2 </i>Text3<i xml:space="preserve"> Text4</i> Text5<i xml:space="preserve"> </i>Text6</p>
+</document>

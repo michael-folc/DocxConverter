@@ -52,10 +52,39 @@
     <Compile Include="XslTransformations\Docx2PlainXml\Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="XslTransformations\Docx2PlainXml\IntegrationTestResult.xml">
+    <Content Include="XslTransformations\Docx2PlainXml\EmptyTagsResult.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXml\IntegrationTestSource.xml">
+    <Content Include="XslTransformations\Docx2PlainXml\EmptyTagsSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\WhitespaceResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\WhitespaceSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ItalicResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ItalicSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ParagraphResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ParagraphSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\IntegrationResult.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\IntegrationSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

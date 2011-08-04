@@ -3,52 +3,66 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Xml;
 using System.Xml.Linq;
 using DocxConverter.XslTransformations;
-using NUnit.Framework;
 using Jolt.Testing.Assertions.NUnit.SyntaxHelpers;
+using NUnit.Framework;
 
 namespace Tests.XslTransformations.Docx2PlainXml
 {
   [TestFixture]
   public class Test
   {
-    [Test]
-    public void Test2 ()
-    {
-      var expected = XDocument.Parse (
-          @"<?xml version=""1.0"" encoding=""UTF-8""?>
-<root>
-</root>");
-      //var transformation = CreateXslTransformation ("Docx2PlainXml.xslt");
-      var actual = XDocument.Parse (
-          @"<?xml version=""1.0"" encoding=""UTF-8""?>
+    private XslTransformation _transformation;
 
-<root>
-</root>");
-      Console.WriteLine ("---");
-      Console.WriteLine (actual.ToString ());
-      Console.WriteLine ("---");
-      Console.WriteLine (expected.ToString ());
-      Console.WriteLine ("---");
-      Assert.That (actual.CreateReader (), IsXml.EquivalentTo (expected.CreateReader ()));
+    [SetUp]
+    public void SetUp ()
+    {
+      _transformation = CreateXslTransformation ("Docx2PlainXml.xslt");
     }
 
     [Test]
-    public void IntegrationTest ()
+    public void Paragraph ()
     {
-      var source = GetSourceXml (MethodBase.GetCurrentMethod());
-      var expected = GetResultXml (MethodBase.GetCurrentMethod());
+      RunAssertion (MethodBase.GetCurrentMethod());
+    }
 
-      var transformation = CreateXslTransformation("Docx2PlainXml.xslt");
-      var actual = transformation.Transform (source);
-      Console.WriteLine ("---");
-      Console.WriteLine (actual.ToString ());
-      Console.WriteLine ("---");
-      Console.WriteLine (expected.ToString ());
-      Console.WriteLine ("---");
-      Assert.That (actual.CreateReader (), IsXml.EquivalentTo (expected.CreateReader ()));
+    [Test]
+    public void Italic ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
+    public void Whitespace ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
+    public void EmptyTags ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
+    public void Integration ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod());
+    }
+
+    private void RunAssertion (MethodBase currentMethod)
+    {
+      var source = GetSourceXml (currentMethod);
+      var expected = GetResultXml (currentMethod);
+      var actual = _transformation.Transform (source);
+      using (var actualReader = actual.CreateReader())
+      {
+        using (var expectedReader = expected.CreateReader())
+        {
+          Assert.That (actualReader, IsXml.EquivalentTo (expectedReader));
+        }
+      }
     }
 
     private XslTransformation CreateXslTransformation (string fileName)
@@ -59,12 +73,12 @@ namespace Tests.XslTransformations.Docx2PlainXml
 
     private XDocument GetSourceXml (MethodBase methodBase)
     {
-      return XDocument.Load (GetFileName (methodBase, "Source", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo | LoadOptions.PreserveWhitespace);
+      return XDocument.Load (GetFileName (methodBase, "Source", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
     }
 
     private XDocument GetResultXml (MethodBase methodBase)
     {
-      return XDocument.Load (GetFileName (methodBase, "Result", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo | LoadOptions.PreserveWhitespace);
+      return XDocument.Load (GetFileName (methodBase, "Result", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
     }
 
     private string GetFileName (MethodBase methodBase, string suffix, string extension)
@@ -77,7 +91,7 @@ namespace Tests.XslTransformations.Docx2PlainXml
       var fileName = methodBase.Name + suffix + "." + extension;
 
       var fullPath = Path.Combine (folderName.Concat (new[] { fileName }).ToArray());
-      Assert.That (File.Exists (fullPath));
+      Assert.That (File.Exists (fullPath), "File not found: {0}", fullPath);
 
       return fullPath;
     }
