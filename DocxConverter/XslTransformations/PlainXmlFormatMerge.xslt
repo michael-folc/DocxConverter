@@ -13,10 +13,13 @@
 
 <xsl:template match="p">
     <xsl:copy>
-      <xsl:for-each-group select="node()" group-adjacent="boolean(self::i)">
+      <xsl:for-each-group select="node()" group-adjacent="self::i or self::b">
         <xsl:choose>
-          <xsl:when test="current-grouping-key()">
+          <xsl:when test="current-grouping-key() and (name() = 'i')">
             <i xml:space="preserve"><xsl:apply-templates select="current-group()/node()"/></i>
+          </xsl:when>
+          <xsl:when test="current-grouping-key() and (name() = 'b')">
+            <b xml:space="preserve"><xsl:apply-templates select="current-group()/node()"/></b>
           </xsl:when>
           <xsl:otherwise>
             <xsl:apply-templates select="current-group()"/>

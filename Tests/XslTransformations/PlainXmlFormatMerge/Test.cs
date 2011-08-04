@@ -18,5 +18,11 @@ namespace Tests.XslTransformations.PlainXmlFormatMerge
     {
       RunAssertion (MethodBase.GetCurrentMethod ());
     }
+
+    [Test]
+    public void Bold ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
   }
 }
