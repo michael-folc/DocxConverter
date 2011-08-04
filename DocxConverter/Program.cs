@@ -38,6 +38,7 @@ namespace DocxConverter
        *  -- generate Plain Text
        *   --- Replace italic and bold with special characters
        *   --- Line wrap: http://xsltcookbook2.atw.hu/xsltckbk2-chp-7-sect-6.html
+       *                  http://plasmasturm.org/log/xslwordwrap/
       
        * - Generate HTML from plain xml
        *  -- merge adjacent nodes 
