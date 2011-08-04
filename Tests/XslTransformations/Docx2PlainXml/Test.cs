@@ -50,6 +50,23 @@ namespace Tests.XslTransformations.Docx2PlainXml
     }
 
     [Test]
+    public void HeadingLevelOne ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
+    public void HeadingLevelTwo ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
+    public void HeadingLevelThree ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+    [Test]
     public void Integration ()
     {
       RunAssertion (MethodBase.GetCurrentMethod());

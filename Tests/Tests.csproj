@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XslTransformations\Docx2PlainXml\Test.cs" />
-    <Compile Include="XslTransformations\Docx2PlainXml\TestBase.cs" />
+    <Compile Include="XslTransformations\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XslTransformations\Docx2PlainXml\BoldResult.xml">
@@ -58,6 +58,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\Docx2PlainXml\BoldSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelThreeResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelThreeSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelTwoResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelTwoSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelOneResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\HeadingLevelOneSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\Docx2PlainXml\ItalicAndBoldResult.xml">

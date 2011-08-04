@@ -8,7 +8,7 @@ using DocxConverter.XslTransformations;
 using Jolt.Testing.Assertions.NUnit.SyntaxHelpers;
 using NUnit.Framework;
 
-namespace Tests.XslTransformations.Docx2PlainXml
+namespace Tests.XslTransformations
 {
   public abstract class TestBase
   {
