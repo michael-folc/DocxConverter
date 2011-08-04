@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jolt.Automata.Glee</name>
+    </assembly>
+    <members>
+        <member name="T:Jolt.Automata.Glee.FsmConverter">
+            <summary>
+            Provides methods for converting a <see cref="!:FiniteStateMachine"/> to a Microsoft GLEE representation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.Glee.FsmConverter.ToGleeGraph``1(Jolt.Automata.FiniteStateMachine{``0})">
+             <summary>
+             Converts the given <see cref="!:FiniteStateMachine"/> to a Microsoft GLEE representation.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="fsm">
+             The <see cref="!:FiniteStateMachine"/> to convert.
+             </param>
+             
+             <returns>
+             A GLEE graph containing the vertices and edges from <paramref name="fsm"/>.
+             </returns>
+        </member>
+    </members>
+</doc>

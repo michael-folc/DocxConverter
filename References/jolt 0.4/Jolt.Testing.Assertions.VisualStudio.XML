@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jolt.Testing.Assertions.VisualStudio</name>
+    </assembly>
+    <members>
+        <member name="T:Jolt.Testing.Assertions.VisualStudio.XmlAssert">
+            <summary>
+            Provides assertion methods for verifying and querying the
+            contents and structure of XML.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.AreEqual(System.Xml.XmlReader,System.Xml.XmlReader)">
+            <summary>
+            Asserts that the XML referenced by two given <see cref="T:System.Xml.XmlReader"/> objects
+            are equal in terms of contents and structure.
+            </summary>
+            
+            <param name="expected">
+            An <see cref="T:System.Xml.XmlReader"/> referencing the expected XML, 
+            </param>
+            
+            <param name="actual">
+            An <see cref="T:System.Xml.XmlReader"/>, referencing the XML to validate.
+            </param>
+            
+            <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+            The assertion failed.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.AreEquivalent(Jolt.Testing.Assertions.XmlComparisonFlags,System.Xml.XmlReader,System.Xml.XmlReader)">
+            <summary>
+            Asserts that the XML referenced by two given <see cref="T:System.Xml.XmlReader"/> objects
+            are equivalent according to the given equivalency configuration.
+            </summary>
+            
+            <param name="flags">
+            A <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> value denoting the definition of equivalency.
+            </param>
+            
+            <param name="expected">
+            An <see cref="T:System.Xml.XmlReader"/> referencing the expected XML, 
+            </param>
+            
+            <param name="actual">
+            An <see cref="T:System.Xml.XmlReader"/>, referencing the XML to validate.
+            </param>
+            
+            <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+            The assertion failed.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.IsValid(System.Xml.Schema.XmlSchemaSet,System.Xml.XmlReader)">
+            <summary>
+            Asserts that the XML referenced by the given <see cref="T:System.Xml.XmlReader"/> object
+            is valid with the given schemas.
+            </summary>
+            
+            <param name="schemas">
+            The schemas used to validate.
+            </param>
+            
+            <param name="actual">
+            An <see cref="T:System.Xml.XmlReader"/>, referencing the XML to validate.
+            </param>
+            
+            <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+            The assertion failed.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.IsValid(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags,System.Xml.XmlReader)">
+             <summary>
+             Asserts that the XML referenced by the given <see cref="T:System.Xml.XmlReader"/> object
+             is valid with the given schemas and validator configuration.
+             </summary>
+             
+             <param name="schemas">
+             The schemas used to validate.
+             </param>
+             
+             <param name="flags">
+             An <see cref="T:System.Xml.Schema.XmlSchemaValidationFlags"/> value that configures the XML validator.
+             </param>
+            
+             <param name="actual">
+             An <see cref="T:System.Xml.XmlReader"/>, referencing the XML to validate.
+             </param>
+             
+             <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+             The assertion failed.
+             </exception>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.ProcessXmlComparisonResult(Jolt.Testing.Assertions.XmlComparisonResult)">
+            <summary>
+            Verifies an <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> for assertion validity
+            </summary>
+            
+            <param name="assertionResult">
+            The <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> to verify.
+            </param>
+            
+            <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+            <paramref name="assertionResult"/> describes a failed assertion.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.VisualStudio.XmlAssert.ProcessValidationResult(System.Collections.Generic.IList{System.Xml.Schema.ValidationEventArgs})">
+            <summary>
+            Verifies a <see cref="!:System.Collections.Generic.IList"/> of <see cref="T:System.Xml.Schema.ValidationEventArgs"/>
+            for assertion validity.
+            </summary>
+            
+            <param name="assertionResult">
+            The list of <see cref="T:System.Xml.Schema.ValidationEventArgs"/> to verify.
+            </param>
+            
+            <exception cref="T:Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">
+            <paramref name="assertionResult"/> describes a failed assertion.
+            </exception>
+        </member>
+    </members>
+</doc>

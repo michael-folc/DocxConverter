@@ -1,0 +1,847 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jolt.Automata</name>
+    </assembly>
+    <members>
+        <member name="T:Jolt.Automata.ConsumptionResult`1">
+            <summary>
+            Contains metadata describing the result of a <see cref="!:FiniteStateMachine"/>
+            consuming a sequence of input symbols.
+            </summary>
+            
+            <typeparam name="TAlphabet">
+            The type that represents the alphabet operated upon by the FSM.
+            </typeparam>
+        </member>
+        <member name="M:Jolt.Automata.ConsumptionResult`1.#ctor(System.Boolean,`0,System.UInt64,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="!:ConsumptionResult"/> class.
+            </summary>
+            
+            <param name="isAccepted"><see cref="!:ConsumptionResult.IsAccepted"/></param>
+            <param name="lastSymbol"><see cref="!:ConsumptionResult.LastSymbol"/></param>
+            <param name="numberOfSymbols"><see cref="!:ConsumptionResult.NumberOfSymbols"/></param>
+            <param name="lastState"><see cref="!:ConsumptionResult.LastState"/></param>
+        </member>
+        <member name="P:Jolt.Automata.ConsumptionResult`1.IsAccepted">
+            <summary>
+            Gets a Boolean value denoting if the <see cref="!:FiniteStateMachine"/> accepted the
+            sequence of input symbols.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.ConsumptionResult`1.LastSymbol">
+            <summary>
+            Gets the last symbol processed by the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.ConsumptionResult`1.NumberOfConsumedSymbols">
+            <summary>
+            Gets the number of symbols consumed by the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.ConsumptionResult`1.LastState">
+            <summary>
+            Gets the last state visited by the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.FiniteStateMachine`1">
+            <summary>
+            Provides methods to create and manage a finite state machine (FSM),
+            its states, and its transitions.
+            </summary>
+            
+            <typeparam name="TAlphabet">
+            The type that represents the alphabet operated upon by the FSM.
+            </typeparam>
+            
+            <remarks>
+            The FSM is modelled as a graph, and may converted
+            to and from the <see cref="!:QuickGraph.IGraph"/> data type.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="!:FiniteStateMachine"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.#ctor(QuickGraph.IBidirectionalGraph{System.String,Jolt.Automata.Transition{`0}})">
+            <summary>
+            Creates a new instance of the <see cref="!:FiniteStateMachine"/> class,
+            copying all vertices and edges from the given graph.
+            </summary>
+            
+            <param name="graph">
+            The graph to import into the new finite state machine.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.#ctor(QuickGraph.IMutableBidirectionalGraph{System.String,Jolt.Automata.Transition{`0}})">
+            <summary>
+            Creates a new instance of the <see cref="!:FiniteStateMachine"/> class,
+            setting the internal graph reference to the given graph.
+            </summary>
+            
+            <param name="graph">
+            A graph containing transitions and states.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.AddState(System.String)">
+            <summary>
+            Adds a state to the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+            
+            <param name="state">
+            The name of the state to add.
+            </param>
+            
+            <returns>
+            Returns true if the state was successfully added to the FSM, false otherwise.
+            </returns>
+            
+            <remarks>
+            <paramref name="state"/> must be unique within the set of states in
+            the <see cref="!:FiniteStateMachine"/>.
+            </remarks>
+            
+            <exception cref="T:System.ArgumentException">
+            A reserved name was given for <paramref name="state"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.AddStates(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a collection of states to the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+            
+            <param name="states">
+            The names of the states to add.
+            </param>
+            
+            <returns>
+            Returns true if the state was successfully added to the FSM, false otherwise.
+            </returns>
+            
+            <remarks>
+            <paramref name="states"/> must be unique within the set of states in
+            the <see cref="!:FiniteStateMachine"/>.
+            </remarks>
+            
+            <exception cref="T:System.ArgumentException">
+            A reserved name was given in <paramref name="states"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.RemoveState(System.String)">
+            <summary>
+            Removes a state from the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+            
+            <param name="state">
+            The state to remove.
+            </param>
+            
+            <returns>
+            Returns true if <paramref name="state"/> was found and removed from the FSM, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.AddTransition(Jolt.Automata.Transition{`0})">
+            <summary>
+            Adds a <see cref="!:Transition"/> to the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+            
+            <param name="transition">
+            The <see cref="!:Transition"/> to add.
+            </param>
+            
+            <remarks>
+            The states involved in <paramref name="transition"/> must have already
+            been added to the FSM.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.RemoveTransition(Jolt.Automata.Transition{`0})">
+            <summary>
+            Removes a <see cref="!:Transition"/> from the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+            
+            <param name="transition">
+            The <see cref="!:Transition"/> to remove.
+            </param>
+            
+            <returns>
+            Returns true if <paramref name="transition"/> was found and removed from the FSM, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.SetFinalState(System.String)">
+            <summary>
+            Designates a state as a final state.
+            </summary>
+            
+            <param name="state">
+            The state to designate a final state.
+            </param>
+            
+            <exception cref="T:System.ArgumentException">
+            <paramref name="state"/> does not exist in the FSM.
+            </exception>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.SetFinalStates(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Designates a collection of states as finals states.
+            </summary>
+            
+            <param name="states">
+            The states to designate as final states.
+            </param>
+            
+            <exception cref="T:System.ArgumentException">
+            At least one state in <paramref name="states"/> does not exist in the FSM.
+            </exception>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.ClearFinalState(System.String)">
+            <summary>
+            Clears the final state marking of a given state.
+            </summary>
+            
+            <param name="state">
+            The final state to unmark.
+            </param>
+            
+            <returns>
+            Returns true if <paramref name="state"/> exists in the FSM and is successfully
+            unmarked as a final state, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.ClearFinalStates(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Clears the final state marking of a given collection of states.
+            </summary>
+            
+            <param name="states">
+            The final states to unmark.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.IsFinalState(System.String)">
+            <summary>
+            Determines if the given state is a final state.
+            </summary>
+            
+            <param name="state">
+            The state to validate.
+            </param>
+            
+            <returns>
+            Returns true if <paramref name="state"/> is a final state, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.CreateStateEnumerator(System.String)">
+            <summary>
+            Creates a new <see cref="!:IFsmEnumerator"/> instance that is capable of
+            consuming input for a non-deterministic FSM.
+            </summary>
+            
+            <param name="startState">
+            The initial state of the FSM enumerator.
+            </param>
+            
+            <returns>
+            A new enumerator, with <paramref name="startState"/> set to the initial state of enumeration.
+            </returns>
+            
+            <exception cref="T:System.ArgumentException">
+            <paramref name="startState"/> is not a state in the FSM&gt;
+            </exception>
+        </member>
+        <member name="M:Jolt.Automata.FiniteStateMachine`1.Consume(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines if the the <see cref="!:FiniteStateMachine"/> accepts a
+            given sequence of input symbols.
+            </summary>
+            
+            <param name="inputSymbols">
+            The symbols to process.
+            </param>
+            
+            <returns>
+            Returns a <see cref="!:ConsumptionResult"/> object denoting the success
+            or failure of the input symbol processing.
+            </returns>
+            
+            <remarks>
+            Consumes the given set of input symbols from the configured start state of the FSM,
+            until a symbol is encountered that does not cause a transition, or all symbols are
+            successfully consumed.
+            </remarks>
+        </member>
+        <member name="F:Jolt.Automata.FiniteStateMachine`1.ErrorState">
+            <summary>
+            The name of the implicit error state for all FSMs.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.FiniteStateMachine`1.AsGraph">
+            <summary>
+            Gets the internal representation of the <see cref="!:FiniteStateMachine"/> as a graph.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.FiniteStateMachine`1.StartState">
+            <summary>
+            Gets/marks an existing state with the finite state machine as the start state.
+            </summary>
+            
+            <exception cref="T:System.ArgumentException">
+            The state mared as a start state does not exist in the FSM&gt;
+            </exception>
+        </member>
+        <member name="P:Jolt.Automata.FiniteStateMachine`1.FinalStates">
+            <summary>
+            Enumerates the final states of the <see cref="!:FiniteStateMachine"/>.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.IFsmEnumerator`1">
+            <summary>
+            Defines a contract for enumerating states in a <see cref="!:FiniteStateMachine"/> (FSM).
+            </summary>
+            
+            <typeparam name="TAlphabet">
+            The type that represents the alphabet operated upon by the FSM.
+            </typeparam>
+        </member>
+        <member name="M:Jolt.Automata.IFsmEnumerator`1.NextState(`0)">
+            <summary>
+            Performs a state transition from the current enumeration state
+            using the given input symbol.
+            </summary>
+            
+            <param name="inputSymbol">
+            The symbol that exercises a state transition.
+            </param>
+            
+            <returns>
+            Returns true if a state transition occurs, false otherwise.
+            </returns>
+        </member>
+        <member name="P:Jolt.Automata.IFsmEnumerator`1.CurrentState">
+            <summary>
+            Gets the state referenced by the enumerator.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.FsmConverter">
+            <summary>
+            Converts a <see cref="!:FiniteStateMachine"/> to various external representations.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.FsmConverter.ToGraphML``1(Jolt.Automata.FiniteStateMachine{``0},System.Xml.XmlWriter)">
+             <summary>
+             Serializes the given <see cref="!:FiniteStateMachine"/> to GraphML.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="fsm">
+             The <see cref="!:FiniteStateMachine"/> to convert.
+             </param>
+             
+             <param name="graphMLWriter">
+             The <see cref="T:System.Xml.XmlWriter"/> that receives the serialized data.
+             </param>
+             
+             <remarks>
+             <paramref name="graphMLWriter"/> is not closed by this method.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FsmConverter.FromGraphML``1(System.IO.TextReader)">
+             <summary>
+             Deserializes the given GraphML data stream to a new <see cref="!:FiniteStateMachine"/>.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+             
+             <param name="graphMLReader">
+             The GraphML data stream to convert.
+             </param>
+            
+             <returns>
+             A new <see cref="!:FiniteStateMachine"/> equivalent to the given GraphML.
+             </returns>
+             
+             <remarks>
+             <paramref name="graphMLReader"/> is not closed by this method.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FsmConverter.ToBinary``1(Jolt.Automata.FiniteStateMachine{``0},System.IO.Stream)">
+             <summary>
+             Serializes the given <see cref="!:FiniteStateMachine"/> to a binary stream.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="fsm">
+             The <see cref="!:FiniteStateMachine"/> to convert.
+             </param>
+            
+             <param name="targetStream">
+             The <see cref="T:System.IO.Stream"/> that receives the serailized data.
+             </param>
+             
+             <remarks>
+             <paramref name="targetStream"/> is not closed by this method.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FsmConverter.FromBinary``1(System.IO.Stream)">
+             <summary>
+             Deserializes the given data stream to a <see cref="!:FiniteStateMachine"/> object.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="binaryStream">
+             The binary stream to convert.
+             </param>
+             
+             <returns>
+             A new <see cref="!:FiniteStateMachine"/> equivalent to the given binary data.
+             </returns>
+             
+             <remarks>
+             <paramref name="binaryStream"/> is not closed by this method.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Automata.FsmConverter.ToGraphViz``1(Jolt.Automata.FiniteStateMachine{``0},System.IO.TextWriter)">
+             <summary>
+             Serializes the given <see cref="!:FiniteStateMachine"/> to a GraphViz representation.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="fsm">
+             The <see cref="!:FiniteStateMachine"/> to convert.
+             </param>
+            
+             <param name="writer">
+             The <see cref="T:System.IO.TextWriter"/> that receives the serialized data.
+             </param>
+             
+             <remarks>
+             <paramref name="writer"/> is not closed by this method.
+             </remarks>
+        </member>
+        <member name="T:Jolt.Automata.QuickGraph.TextWriterDotEngine">
+            <summary>
+            Implements the IDotEngine interface and provides a GraphViz
+            dot engine capable of writing data to a <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.TextWriterDotEngine.#ctor(System.IO.TextWriter)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Automata.QuickGraph.TextWriterDotEngine"/> class,
+            intializing the object with the given <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            
+            <param name="writer">
+            The writer that accepts the engine's GraphViz data.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.TextWriterDotEngine.QuickGraph#Graphviz#IDotEngine#Run(QuickGraph.Graphviz.Dot.GraphvizImageType,System.String,System.String)">
+            <summary>
+            Writes the given GraphViz data to the configured <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            
+            <seealso cref="M:QuickGraph.Graphviz.IDotEngine.Run(QuickGraph.Graphviz.Dot.GraphvizImageType,System.String,System.String)"/>
+        </member>
+        <member name="T:Jolt.Automata.QuickGraph.GraphMLState">
+            <summary>
+            Implements a type to enable the [de]serialization of a state object to/from GraphML.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLState.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Automata.QuickGraph.GraphMLState"/> class, initializing all
+            attributes to their default values.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLState.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Automata.QuickGraph.GraphMLState"/> class,
+            initializing its attributes to the given values.
+            </summary>
+            
+            <param name="name">
+            The name or ID of the state.
+            </param>
+            
+            <param name="isStartState">
+            Determines if the state is the start state.
+            </param>
+            
+            <param name="isFinalState">
+            Determines if the state is a final state.
+            </param>
+        </member>
+        <member name="P:Jolt.Automata.QuickGraph.GraphMLState.Name">
+            <summary>
+            Gets/sets the state name.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.QuickGraph.GraphMLState.IsStartState">
+            <summary>
+            Gets/sets the start-state qualifier.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.QuickGraph.GraphMLState.IsFinalState">
+            <summary>
+            Gets/sets the final-state qualifier.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.Transition`1">
+            <summary>
+            Represents a transition between two vertices in a finite
+            state machine (FSM).
+            </summary>
+            
+            <typeparam name="TAlphabet">
+            The type that represents the alphabet operated upon by the FSM.
+            </typeparam>
+            
+            <seealso cref="!:FiniteStateMachine"/>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.#ctor(System.String,System.String,System.Predicate{`0})">
+            <summary>
+            Creates a new instance of the <see cref="!:Transition"/> class,
+            initializing its description to the name of the method stored
+            in the given transition predicate.
+            </summary>
+            
+            <param name="sourceState">
+            The source state of the transition.
+            </param>
+            
+            <param name="targetState">
+            The destination state of the transition.
+            </param>
+            
+            <param name="transitionPredicate">
+            A <see cref="!:System.Predicate"/> that determines if the state transition is valid,
+            given an input value from the FSM alphabet.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.#ctor(System.String,System.String,System.Predicate{`0},System.String)">
+            <summary>
+            Creates a new instance of the <see cref="!:Transition"/> class,
+            explicitly initializing all attributes of the object.
+            </summary>
+            
+            <param name="sourceState">
+            The source state of the transition.
+            </param>
+            
+            <param name="targetState">
+            The destination state of the transition.
+            </param>
+            
+            <param name="transitionPredicate">
+            A predicate that determines if the state transition is valid,
+            given an input value from the FSM alphabet.
+            </param>
+            
+            <param name="description">
+            A name or description for the transition.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.Equals(System.Object)">
+            <summary>
+            Performs a value-based equality comparison for a given
+            Transition.
+            </summary>
+            
+            <param name="obj">
+            The transition to compare with.
+            </param>
+            
+            <remarks>
+            The properties that participate in the equality expression
+            are: <see cref="!:Source"/>, <see cref="!:Target"/>, <see cref="P:Jolt.Automata.Transition`1.TransitionPredicate"/>
+            <see cref="P:Jolt.Automata.Transition`1.Description"/>, and <see cref="!:OnTranstion"/>.
+            
+            Results may vary for types TAlphabet that do not implement
+            value-based equality semantics.
+            </remarks>
+            
+            <returns>
+            A Boolean value denoting the equality of the two compared objects.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.GetHashCode">
+            <summary>
+            <see cref="M:System.Object.GetHashCode"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.Equals(Jolt.Automata.Transition{`0})">
+            <summary>
+            <see cref="M:Jolt.Automata.Transition`1.Equals(System.Object)"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.Transition`1.RaiseOnTransitionEvent(Jolt.Automata.StateTransitionEventArgs{`0})">
+            <summary>
+            Raises the OnTransition event with the given arugument.
+            </summary>
+            
+            <param name="eventArgs">
+            The arguments raised by the event.
+            </param>
+        </member>
+        <member name="P:Jolt.Automata.Transition`1.TransitionPredicate">
+            <summary>
+            Gets the <see cref="!:System.Predicate"/> associate with the transition.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Transition`1.Description">
+            <summary>
+            Gets/sets the transition's description.
+            </summary>
+        </member>
+        <member name="E:Jolt.Automata.Transition`1.OnTransition">
+            <summary>
+            The OnTransition event is raised each time the <see cref="P:Jolt.Automata.Transition`1.TransitionPredicate"/>
+            evaluates to TRUE, as a result of input symbol consumption.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_AddState_ImplicitErrorState">
+            <summary>
+              Looks up a localized string similar to The state &apos;{0}&apos; is a reserved state name and can not be added to the finite state machine..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_AddStates_ImplicitErrorState">
+            <summary>
+              Looks up a localized string similar to The given collection contains the reserved state name &apos;{0}&apos;, which can not be added to the finite state machine..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_CreateEnumerator_InvalidStartState">
+            <summary>
+              Looks up a localized string similar to An FSM enumerator could not be created because the given start state &apos;{0}&apos; is not present in the FSM..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_MoveNext_InvalidOperation">
+            <summary>
+              Looks up a localized string similar to The IEnumerator.MoveNext() method is invalid for this class as iteration requires an input symbol.  Please use the MoveNext(TAlphabet) overload..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_NDFSM_NotSupported">
+            <summary>
+              Looks up a localized string similar to More than one transition from the state &apos;{0}&apos; that satisfies the input symbol &apos;{1}&apos; was detected.  Non-deterministic FSMs are not supported..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_SetFinalState_InvalidState">
+            <summary>
+              Looks up a localized string similar to The state &apos;{0}&apos; can not be marked as a final state as it does not exist within the state machine..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_SetFinalStates_InvalidState">
+            <summary>
+              Looks up a localized string similar to The given states could not be marked as final states as there is at least one state in the collection that does not exist within the state machine..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Error_SetStartState_InvalidState">
+            <summary>
+              Looks up a localized string similar to The state &apos;{0}&apos; can not be marked as the start state as it does not exist within the state machine..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Warn_TransitionDeserialization_InvalidPredicate">
+            <summary>
+              Looks up a localized string similar to Can not deserialize the transition predicate &apos;{0}&apos; for the transition [{1}-&gt;{2}] as it is invalid.  Verify that the signature of the predicate is valid for the transition type, and that the predicate is static.  The default &quot;false-for-all&quot; predicate will be used..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Warn_TransitionDeserialization_PredicateNotSpecified">
+            <summary>
+              Looks up a localized string similar to Can not deserialize transition predicate for the transition [{0}-&gt;{1}] as it was not specified.  The default &quot;false-for-all&quot; predicate will be used..
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.Properties.Resources.Warn_TransitionSerialization_DiscardInstancePredicate">
+            <summary>
+              Looks up a localized string similar to The transition predicate with name &apos;{0}&apos; and from type &apos;{1}&apos; can not be serialized as it is non-static..
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.QuickGraph.GraphMLTransition`1">
+            <summary>
+            Implements a type to enable the [de]serialization of a <see cref="!:Transition"/>
+            object to and from GraphML.
+            </summary>
+            
+            <typeparam name="TAlphabet">
+            The type that represents the alphabet operated upon by the
+            transition object.
+            </typeparam>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLTransition`1.#ctor(Jolt.Automata.QuickGraph.GraphMLState,Jolt.Automata.QuickGraph.GraphMLState)">
+            <summary>
+            Creates a new instance of the <see cref="!:GraphMLTransition"/> class,
+            initializing the source and target states of the new object.
+            </summary>
+            
+            <param name="source">
+            The source state.
+            </param>
+            
+            <param name="target">
+            The target state.
+            </param>
+            
+            <remaks>
+            Does not initialize other attributes of the new object.
+            </remaks>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLTransition`1.#ctor(Jolt.Automata.QuickGraph.GraphMLState,Jolt.Automata.QuickGraph.GraphMLState,System.String,System.Predicate{`0})">
+            <summary>
+            Creates a new instance of the <see cref="!:GraphMLTransition"/> class,
+            initializing its attributes to the given values..
+            </summary>
+            
+            <param name="source">
+            The source state.
+            </param>
+            
+            <param name="target">
+            The target state.
+            </param>
+            
+            <param name="description">
+            The transition's description.
+            </param>
+            
+            <param name="predicate">
+            The transition's state-transition predicate.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLTransition`1.ToTransition">
+            <summary>
+            Converts the intenral state of this object to a a new <see cref="!:Transition"/> object.
+            </summary>
+            
+            <returns>
+            A newly created <see cref="!:Transition"/> object, corresponding to this object.
+            </returns>
+        </member>
+        <member name="M:Jolt.Automata.QuickGraph.GraphMLTransition`1.DeserializeMethod(System.String)">
+             <summary>
+             Deserializes a given string into a transition <see cref="!:System.Predicate"/>.
+             </summary>
+             
+             <typeparam name="TAlphabet">
+             The type that represents the alphabet operated upon by the
+             finite state machine.
+             </typeparam>
+            
+             <param name="method">
+             The serialized method name (methodName;assemblyQualifiedTypeName).
+             </param>
+             
+             <returns>
+             Creates a new predicate if the string is deserialized to an existing method,
+             or returns a default predicate otherwise.
+             </returns>
+             
+             <remarks>
+             The default predicate returns false for all inputs.
+             </remarks>
+        </member>
+        <member name="P:Jolt.Automata.QuickGraph.GraphMLTransition`1.Description">
+            <summary>
+            Gets/sets the transition description.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.QuickGraph.GraphMLTransition`1.TransitionPredicate">
+            <summary>
+            Gets/sets the transition predicate.
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.FsmEnumerator`1">
+            <summary>
+            Implements the <see cref="!:IFsmEnumerator"/> interface, providing an
+            enumerator that traverses a finite state machine in the standard manner.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.FsmEnumerator`1.#ctor(System.String,QuickGraph.IImplicitGraph{System.String,Jolt.Automata.Transition{`0}})">
+            <summary>
+            Creates a new instance of the <see cref="!:FsmEnumerator"/> class.
+            </summary>
+            
+            <param name="startState">
+            The initial state referenced by the enumerator.
+            </param>
+            
+            <param name="graph">
+            The FSM to navigate, represented as a graph.
+            </param>
+        </member>
+        <member name="M:Jolt.Automata.FsmEnumerator`1.NextState(`0)">
+            <summary>
+            <see cref="M:Jolt.Automata.IFsmEnumerator`1.NextState(`0)"/>
+            </summary>
+            
+            <exception cref="T:System.NotSupportedException">
+            A non deterministic transition is detected in the FSM&gt;
+            </exception>
+        </member>
+        <member name="P:Jolt.Automata.FsmEnumerator`1.CurrentState">
+            <summary>
+            <see cref="P:Jolt.Automata.IFsmEnumerator`1.CurrentState"/>
+            </summary>
+        </member>
+        <member name="T:Jolt.Automata.StateTransitionEventArgs`1">
+            <summary>
+            Contains the data that is shared to a subscriber of the
+            <see cref="!:Transition.OnStateTransition"/> event.
+            </summary>
+        </member>
+        <member name="M:Jolt.Automata.StateTransitionEventArgs`1.#ctor(System.String,`0)">
+            <summary>
+            Creates a new instance of the <see cref="!:StateTransitionEventArgs"/> class.
+            </summary>
+            
+            <param name="sourceState">
+            The transition's originating state.
+            </param>
+            
+            <param name="inputSymbol">
+            The symbol causing the state transition.
+            </param>
+        </member>
+        <member name="P:Jolt.Automata.StateTransitionEventArgs`1.SourceState">
+            <summary>
+            Gets the transition's originating state.
+            </summary>
+        </member>
+        <member name="P:Jolt.Automata.StateTransitionEventArgs`1.InputSymbol">
+            <summary>
+            Gets the symbol causing the state transition.
+            </summary>
+        </member>
+    </members>
+</doc>

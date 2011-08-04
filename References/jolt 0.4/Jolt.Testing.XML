@@ -1,0 +1,2391 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jolt.Testing</name>
+    </assembly>
+    <members>
+        <member name="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase">
+            <summary>
+            Defines a base class for incrementally constructing an XML doc
+            comments file pertaining to the members of a proxy and interface type.
+            </summary>
+            
+            <remarks>
+            The methods of the base class perform no operations and thus instances
+            are suitable for a default/no-op configuration.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> class, with an 
+            empty XML doc comments document.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.AddConstuctor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Default implementation -- no operation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.AddEvent(System.Reflection.EventInfo)">
+            <summary>
+            Default implementation -- no operation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.AddMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Default implementation -- no operation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.AddProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Default implementation -- no operation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.CreateReader">
+            <summary>
+            Creates a new instance of an <see cref="T:System.Xml.XmlReader"/> for accessing the current
+            state of the XML doc comment document.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase.XmlDocComments">
+            <summary>
+            Gets the <see cref="!:System.Xml.XLinq.XDocument"/> document in which the
+            buider is incrementally populating.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.NonGenericConstructorDeclarer">
+            <summary>
+            Defines a concrete <see cref="!:AbstractMethodDeclarer"/> class that creates
+            <see cref="T:System.Reflection.Emit.ConstructorBuilder"/> objects for non-generic
+            constructors on the proxy type.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2">
+            <summary>
+            Defines an abstract base class that generalizes the declaration of
+            a <see cref="T:System.Reflection.MethodBase"/> type.
+            </summary>
+            
+            <typeparam name="TMethodBuilder">
+            The type of the method buider used for declaring the method.
+            </typeparam>
+            
+            <typeparam name="TMethod">
+            The type of the method created by the method builder.
+            </typeparam>
+            
+            <remarks>
+            Used by a <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> for creating constructor, interface
+            method and proxy method declarations.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.#ctor(System.Reflection.Emit.TypeBuilder,System.Reflection.MethodAttributes,`1,Jolt.Testing.CodeGeneration.IMethodDeclarerImpl{`0,`1})">
+            <summary>
+            Creates a new instance of the <see cref="!:AbstractMethodDeclarer"/> class.
+            </summary>
+            
+            <param name="builder">
+            The <see cref="T:System.Reflection.Emit.TypeBuilder"/> used to create the resulting method.
+            </param>
+            
+            <param name="methodAttributes">
+            The <see cref="T:System.Reflection.MethodAttributes"/> applied to the method upon declaration.
+            </param>
+            
+            <param name="realSubjectTypeMethod">
+            The <see cref="T:System.Reflection.MethodBase"/> object representing the real subject type method
+            from which the resulting method is modelled.
+            </param>
+            
+            <param name="implementation">
+            The <see cref="!:IMethodDeclarerImpl"/> implementation that performs the declaration.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare">
+            <summary>
+            Declares a new <typeparamref name="TMethod"/>, modelling it after <see cref="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.RealSubjectTypeMethod"/>.
+            </summary>
+            
+            <returns>
+            Returns the <typeparamref name="TMethodBuilder"/> object containing the method declaration.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare(System.Type)">
+            <summary>
+            Declares a new <typeparamref name="TMethod"/>, modelling it after <see cref="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.RealSubjectTypeMethod"/>.
+            Allows the option of overriding the new method's return type.
+            </summary>
+            
+            <param name="desiredReturnType">
+            The desired return <see cref="T:System.Type"/> of the newly declared method.
+            </param>
+            
+            <returns>
+            Returns the <typeparamref name="TMethodBuilder"/> object containing the method declaration.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Builder">
+            <summary>
+            Gets the associated <see cref="T:System.Reflection.Emit.TypeBuilder"/> object.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.MethodAttributes">
+            <summary>
+            Gets the associated <see cref="T:System.Reflection.MethodAttributes"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.RealSubjectTypeMethod">
+            <summary>
+            Gets the associated <typeparamref name="TMethod"/>, representing a
+            real subject type method.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Implementation">
+            <summary>
+            Gets the associated <see cref="!:IMethodDeclarerImpl"/> implementation.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.NonGenericConstructorDeclarer.#ctor(System.Reflection.Emit.TypeBuilder,System.Reflection.MethodAttributes,System.Reflection.ConstructorInfo,Jolt.Testing.CodeGeneration.IMethodDeclarerImpl{System.Reflection.Emit.ConstructorBuilder,System.Reflection.ConstructorInfo})">
+            <see cref="!:AbstractMethodDeclarer&lt;ConstructorBuilder, ConstructorInfo&gt;.ctor(TypeBuilder, MethodAttributes, ConstructorInfo, AbstractMethodDeclarerImpl&lt;ConstructorBuilder,  ConstructorInfo&gt;"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.NonGenericConstructorDeclarer.Declare">
+            <see cref="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.NonGenericConstructorDeclarer.Declare(System.Type)">
+             <summary>
+             Not supported since a constructor does not have a return type.
+             </summary>
+            
+             <exception cref="T:System.InvalidOperationException">
+             Any invocation.
+             </exception>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.XmlComparisonResult">
+            <summary>
+            Contains metadata describing the result of executing an XML assertion.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlComparisonResult.#ctor">
+            <summary>
+            Creates a a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> class.
+            </summary>
+            
+            <remarks>
+            Initializes <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.Result"/> to true, <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.Message"/> to the empty string,
+            <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.ExpectedElement"/> to null, <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.ActualElement"/> to null,
+            and <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.XPathHint"/> to null.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlComparisonResult.#ctor(System.Boolean,System.String,System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> class, initializing
+            the values of its attributes.
+            </summary>
+            
+            <param name="comparisonResult">
+            The result of the comparison.
+            </param>
+            
+            <param name="message">
+            A message describinng the result of the comparison..
+            </param>
+            
+            <param name="expected">
+            The expected <see cref="!:System.Xml.XLinq.XElement"/> operated upon by the comparison.
+            </param>
+            
+            <param name="actual">
+            The actual <see cref="!:System.Xml.XLinq.XElement"/> operated upon by the comparison.
+            </param>
+            
+            <remarks>
+            Initializes <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.XPathHint"/> to an XPath expression that locates <paramref name="actual"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlComparisonResult.CreateXPathExpressionFor(System.Xml.Linq.XElement)">
+            <summary>
+            Derives an XPath expression for a given <see cref="!:System.Xml.XLinq.XElement"/>.
+            </summary>
+            
+            <param name="element">
+            The <see cref="!:System.Xml.XLinq.XElement"/> for which an XPath expression is computed.
+            </param>
+            
+            <returns>
+            An approximate XPath expression for locating <paramref name="element"/>.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlComparisonResult.Result">
+            <summary>
+            Gets the result of the comparison.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlComparisonResult.Message">
+            <param name="message">
+            Gets the message describinng the result of the comparison..
+            </param>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlComparisonResult.ExpectedElement">
+            <summary>
+            Gets the expected <see cref="!:System.Xml.XLinq.XElement"/> operated upon by the comparison.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlComparisonResult.ActualElement">
+            <summary>
+            Gets the actual <see cref="!:System.Xml.XLinq.XElement"/> operated upon by the comparison.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlComparisonResult.XPathHint">
+            <summary>
+            Gets an approximate XPath expression for locating <see cref="P:Jolt.Testing.Assertions.XmlComparisonResult.ActualElement"/>,
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings">
+            <summary>
+            Provides configuration settings to control the type construction
+            process in the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> class
+            with the default attribute values.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> class
+            with the given attribute values.
+            </summary>
+            
+            <param name="emitStatics">
+            Determines if static methods/properties are generated.
+            </param>
+            
+            <param name="emitMethods">
+            Determines if methods are generated.
+            </param>
+            
+            <param name="emitProperties">
+            Determines if properties are generated.
+            </param>
+            
+            <param name="emitEvents">
+            Determines if events are generated.
+            </param>
+            
+            <param name="emitXmlDocComments">
+            Determines if XML doc comments are produced.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> class
+            with the given attribute values, enabling assembly signing.
+            </summary>
+            
+            <param name="emitStatics">
+            Determines if static methods/properties are generated.
+            </param>
+            
+            <param name="emitMethods">
+            Determines if methods are generated.
+            </param>
+            
+            <param name="emitProperties">
+            Determines if properties are generated.
+            </param>
+            
+            <param name="emitEvents">
+            Determines if events are generated.
+            </param>
+            
+            <param name="emitXmlDocComments">
+            Determines if XML doc comments are produced.
+            </param>
+            
+            <param name="keyPairFullPath">
+            The full path to a strong-name key-pair file, enabling assembly signing.
+            </param>
+        </member>
+        <member name="F:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.Default">
+            <summary>
+            Store an instance of the default configuration.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.EmitStatics">
+            <summary>
+            Gets the value denoting the ability to generate a static function.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.EmitMethods">
+            <summary>
+            Gets the value denoting the ability to generate a method.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.EmitProperties">
+            <summary>
+            Gets the value denoting the ability to generate a property.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.EmitEvents">
+            <summary>
+            Gets the value denoting the ability to generate an event.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.EmitXmlDocComments">
+            <summary>
+            Gets the value denoting the ability to generate XML doc comments.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.KeyPairFullPath">
+            <summary>
+            Gets the value denoting the path of the strong-name key-pair file
+            that will sign the assembly.
+            </summary>
+            
+            <remarks>
+            An empty value denotes that assembly signing is disabled.
+            </remarks>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.KeyPair">
+            <summary>
+            Gets/sets the <see cref="T:System.Reflection.StrongNameKeyPair"/> object for signing
+            a proxy assembly.
+            </summary>
+            
+            <remarks>
+            If the backing store for the property is null, the
+            <see cref="T:System.Reflection.StrongNameKeyPair"/> object is loaded from the file at
+            <see cref="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings.KeyPairFullPath"/> and stored for future use.
+            </remarks>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.MethodDeclarerTypes">
+            <summary>
+            Enumerates the concrete <see cref="!:AbstractMethodDeclarer"/> types.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.MethodDeclarerFactory">
+            <summary>
+            Defines a factory class for constructing concrete instances of
+            the <see cref="!:AbstractMethodDeclarer"/> family of types.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarerFactory.#ctor(System.Reflection.Emit.TypeBuilder,System.Reflection.Emit.TypeBuilder)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.MethodDeclarerFactory"/> class,
+            intializing the factory with the factory-method required
+            <see cref="T:System.Reflection.Emit.TypeBuilder"/> instances.
+            </summary>
+            
+            <param name="interfaceBuilder">
+            The <see cref="T:System.Reflection.Emit.TypeBuilder"/> that represents the proxy interface type.
+            </param>
+            
+            <param name="proxyBuilder">
+            The <see cref="T:System.Reflection.Emit.TypeBuilder"/> that represents the the proxy type.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarerFactory.Create(Jolt.Testing.CodeGeneration.MethodDeclarerTypes,System.Reflection.MethodInfo)">
+            <summary>
+            Creates new instance of an <see cref="!:AbstractMethodDeclarer"/> class,
+            corresponding to a given <see cref="T:Jolt.Testing.CodeGeneration.MethodDeclarerTypes"/> value.
+            </summary>
+            
+            <param name="typeId">
+            The <see cref="T:Jolt.Testing.CodeGeneration.MethodDeclarerTypes"/> value denoting the concrete type to create.
+            </param>
+            
+            <param name="realSubjectTypeMethod">
+            The <see cref="T:System.Reflection.MethodInfo"/> object used to initialize
+            the method declarer.
+            </param>
+            
+            <returns>
+            A new <see cref="!:AbstractMethodDeclarer"/>, specialized to create methods.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarerFactory.Create(System.Reflection.ConstructorInfo)">
+            <summary>
+            Creates a new instance of an <see cref="!:AbstractMethodDeclarer"/> class,
+            specialized to create constructors for a proxy type.
+            </summary>
+            
+            <param name="realSubjectTypeConstructor">
+            The <see cref="T:System.Reflection.ConstructorInfo"/> object used to initialize
+            the constructor declarer.
+            </param>
+            
+            <returns>
+            A new <see cref="!:AbstractMethodDeclarer"/>, specialized to create constructors.
+            </returns>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.GenericMethodDeclarerImpl">
+            <summary>
+            Implements the <see cref="!:IMethodDeclarerImpl"/> contract and provides methods
+            that declare a generic <see cref="T:System.Reflection.MethodInfo"/>.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.IMethodDeclarerImpl`2">
+            <summary>
+            Defines a contract that generalizes the the declaration logic
+            for any <see cref="T:System.Reflection.MethodBase"/>.
+            </summary>
+            
+            <typeparam name="TMethodBuilder">
+            The type of method builder used to declare the method.
+            </typeparam>
+            
+            <typeparam name="TMethod">
+            The type of method created by <typeparamref name="TMethodBuilder"/>.
+            </typeparam>
+            
+            <remarks>
+            Used by an <see cref="!:AbstractMethodDeclarer"/> to customize the style
+            of method declaration (e.g. generic, non-generic, etc...)
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.IMethodDeclarerImpl`2.DeclareMethod(`0,`1,System.Type)">
+            <summary>
+            Declares a <typeparamref name="TMethod"/> using a given
+            <typeparamref name="TMethodBuilder"/>.
+            </summary>
+            
+            <param name="builder">
+            The <typeparamref name="TMethodBuilder"/> used to declare the method.
+            </param>
+            
+            <param name="realSubjectTypeMethod">
+            The <typeparamref name="TMethod"/> to model.
+            </param>
+            
+            <param name="returnType">
+            The return <see cref="T:System.Type"/> of the newly declared method.
+            </param>
+            
+            <remarks>
+            Models the declared method after the signature of
+            <paramref name="realSubjectTypeMethod"/>, and overrides the declared
+            methods return type to <paramref name="returnType"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.IMethodDeclarerImpl`2.DefineMethodParameters(`0,`1)">
+            <summary>
+            Defines the parameters of a <typeparamref name="TMethod"/> using a
+            given <typeparamref name="TMethodBuilder"/>.
+            </summary>
+            
+            <param name="builder">
+            The <typeparamref name="TMethodBuilder"/> used to define the
+            method's parameters.
+            </param>
+            
+            <param name="realSubjectTypeMethod">
+            The <typeparamref name="TMethod"/> whose parameters are modelled.
+            </param>
+            
+            <remarks>
+            Models the method parameters of <paramref name="realSubjectTypeMethod"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.GenericMethodDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#MethodBuilder@System#Reflection#MethodInfo}#DeclareMethod(System.Reflection.Emit.MethodBuilder,System.Reflection.MethodInfo,System.Type)">
+            <see cref="!:IMethodDeclarerImpl&lt;MethodBuilder, MethodInfo&gt;.DeclareMethod(MethodBuilder, MethodInfo, Type&gt;"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.GenericMethodDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#MethodBuilder@System#Reflection#MethodInfo}#DefineMethodParameters(System.Reflection.Emit.MethodBuilder,System.Reflection.MethodInfo)">
+            <see cref="!:IMethodDeclarerImpl&lt;MethodBuilder, MethodInfo&gt;.DefineMethodParameters(MethodBuilder, MethodInfo&gt;"/>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.IAssertionFactory">
+            <summary>
+            Defines a contract for a factory class that creates core assertions.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class.
+            Treats validation warnings as errors.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the valid XML structure.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class, initialized
+            with <paramref name="schemas"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the valid XML structure.
+            </param>
+            
+            <param name="flags">
+            The configuration of the XML validator.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class, initialized
+            with <paramref name="schemas"/> and <paramref name="flags"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlEqualityAssertion">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> class.
+            </summary>
+            
+            <returns>
+            The newly created instance of the <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> class.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlEquivalencyAssertion(Jolt.Testing.Assertions.XmlComparisonFlags)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> class.
+            </summary>
+            
+            <param name="strictness">
+            A set of flags denoting the definition of equivalency, for this instance.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>, initialized with
+            <paramref name="strictness"/>.
+            </returns>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder">
+            <summary>
+            Provides methods to create an <see cref="T:System.Reflection.Assembly"/>
+            and reverse engineer proxy types.
+            </summary>
+            
+            <remarks>
+            The default root namespace is "Jolt.Testing.Generated".
+            </remarks>
+            
+            <seealso cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class.
+            </summary>
+            
+            <remarks>
+            Initializes the assembly builder, using the working directory as the
+            assembly location and a default assembly namespace and filename.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.#ctor(System.String)">
+             <summary>
+             Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class,
+             allowing specification of the assembly namespace.
+             </summary>
+             
+             <param name="rootNamespace">
+             The assembly's root namespace.
+             </param>
+            
+             <remarks>
+             Initializes the assembly builder, using the working directory as the
+             assembly location, and a default assembly filename.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class,
+            allowing specification of the assembly namespace and path.
+            </summary>
+            
+            <param name="rootNamespace">
+            The assembly's root namespace.
+            </param>
+            
+            <param name="assemblyFullPath">
+            The full path of the proxy assembly.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.#ctor(System.String,System.String,Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class,
+            allowing specification of the assembly namespace, path, and configuration.
+            </summary>
+            
+            <param name="rootNamespace">
+            The assembly's root namespace.
+            </param>
+            
+            <param name="assemblyFullPath">
+            The full path of the proxy assembly.
+            </param>
+            
+            <param name="settings">
+            A <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> object containing configuration settings.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.#ctor(System.String,System.String,Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings,System.Func{System.String,System.Type,System.Boolean,System.Reflection.Emit.ModuleBuilder,Jolt.Testing.CodeGeneration.IProxyTypeBuilder})">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class,
+            allowing specification of the assembly namespace, path, and configuration.
+            </summary>
+            
+            <param name="rootNamespace">
+            The assembly's root namespace.
+            </param>
+            
+            <param name="assemblyFullPath">
+            The full path of the proxy assembly.
+            </param>
+            
+            <param name="settings">
+            A <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> object containing configuration settings.
+            </param>
+            
+            <param name="createTypeBuilder">
+            The factory method to use for creating a <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> object.
+            </param>
+            
+            <remarks>
+            Initializes the assembly builder, overriding the default <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>
+            factory method.  Used internally by test code to override <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>
+            operations.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AddType(System.Type)">
+            <summary>
+            Adds a <see cref="T:System.Type"/> to the assembly builder.
+            </summary>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> to which a proxy and interface are created.
+            </param>
+            
+            <remarks>
+            Generates an interface and proxy type containing all of the methods,
+            properties and events of <paramref name="realSubjectType"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AddType(System.Type,System.Collections.Generic.IDictionary{System.Type,System.Type})">
+             <summary>
+             Adds a <see cref="T:System.Type"/> to the assembly builder, allowing
+             the option to override the return types of the given type's methods.
+             </summary>
+             
+             <param name="realSubjectType">
+             The <see cref="T:System.Type"/> to which a proxy and interface are created.
+             </param>
+             
+             <param name="desiredReturnTypeOverrides">
+             A collection of desired return type overrides for <paramref name="realSubjectType"/>.
+             </param>
+            
+             <remarks>
+             Generates an interface and proxy type containing all of the methods,
+             properties and events of <paramref name="realSubjectType"/>.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.CreateAssembly">
+            <summary>
+            Writes the state of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> to disk
+            in the form of an <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+            
+            <returns>
+            Returns a reference to the created <see cref="T:System.Reflection.Assembly"/> .
+            </returns>
+            
+            <remarks>
+            The <see cref="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.Assembly"/> is written to <see cref="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AssemblyFullPath"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.CreateXmlDocCommentReader">
+            <summary>
+            Creates an <see cref="T:System.Xml.XmlReader"/> to read the XML doc comments of
+            created <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+            
+            <returns>
+            A new <see cref="T:System.Xml.XmlReader"/> capable of reading any
+            produced XML doc comments.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AppendXmlDocComments(System.Xml.XmlReader)">
+            <summary>
+            Appends the given XML doc comments to the internally stored XML doc comments.
+            </summary>
+            
+            <param name="reader">
+            The <see cref="T:System.Xml.XmlReader"/> containing the XML doc comments to append.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AddMethod(System.Reflection.MethodInfo,System.Collections.Generic.IDictionary{System.Type,System.Type},Jolt.Testing.CodeGeneration.IProxyTypeBuilder)">
+            <summary>
+            Adds the given method to a given <see cref="T:Jolt.Testing.CodeGeneration.IProxyTypeBuilder"/>
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> representing the member to add to the builder.
+            </param>
+            
+            <param name="desiredReturnTypeOverrides">
+            A collection of desired return type overrides for <paramref name="method"/>.
+            </param>
+            
+            <param name="builder">
+            The <see cref="T:Jolt.Testing.CodeGeneration.IProxyTypeBuilder"/> instance that accepts the method.
+            </param>
+            
+            <remarks>
+            <paramref name="method"/> is added to <paramref name="builder"/> if
+            it isn't already part of another member (property, event) on the proxy type.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.IsSpecialMethod(System.Reflection.MethodInfo,System.String[],System.Reflection.BindingFlags)">
+            <summary>
+            Determines if a given <see cref="T:System.Reflection.MethodInfo"/> is
+            defined as part of a property or event on its declaring type.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to validate.
+            </param>
+            
+            <param name="methodPrefixes">
+            The method prefixes to use as part of validation (e.g. "add_", "get_").
+            </param>
+            
+            <param name="bindings">
+            The <see cref="T:System.Reflection.BindingFlags"/> to use when searching for
+            a special method.
+            </param>
+            
+            <returns>
+            Returns true if the <paramref name="method"/> belongs to a property or event,
+            false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.ComputeMemberBindingFlags(System.Boolean,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:System.Reflection.BindingFlags"/> enumeration representing
+            the given configuration
+            </summary>
+            
+            <param name="emitMember">
+            Denotes if the member type is emitted.
+            </param>
+            
+            <param name="emitStatics">
+            Denotes if static types are remitted.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:System.Reflection.BindingFlags"/> enumeration,
+            representing the requested configuration.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.HandleExceptionsIn(System.Action)">
+            <summary>
+            Invokes a given delegate logging any caught <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+            
+            <param name="action">
+            The function to invoke.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AddProperty(System.Reflection.PropertyInfo,System.Collections.Generic.IDictionary{System.Type,System.Type},Jolt.Testing.CodeGeneration.IProxyTypeBuilder)">
+            <summary>
+            Adds a given <see cref="T:System.Reflection.PropertyInfo"/> to the given <see cref="T:Jolt.Testing.CodeGeneration.IProxyTypeBuilder"/>.
+            </summary>
+            
+            <param name="property">
+            The <see cref="T:System.Reflection.PropertyInfo"/> to add to the builder.
+            </param>
+            
+            <param name="desiredReturnTypeOverrides">
+            A collection of return type overrides for <paramref name="property"/>.
+            </param>
+            
+            <param name="builder">
+            The <see cref="T:Jolt.Testing.CodeGeneration.IProxyTypeBuilder"/> that accepts the property.
+            </param>
+            
+            <remarks>
+            Overrides the property return type when it is located in
+            <paramref name="desiredReturnTypeOverrides"/>.
+            </remarks>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.RootNamespace">
+            <summary>
+            Gets the root namespace of the assembly.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.AssemblyFullPath">
+            <summary>
+            Gets the full path of the proxy assembly.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.Settings">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilderSettings"/> object associated with this object.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.Assembly">
+            <summary>
+            Gets a reference to the encapsulated <see cref="T:System.Reflection.Emit.AssemblyBuilder"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder.Module">
+            <summary>
+            Gets a reference to the encapsulated <see cref="T:System.Reflection.Emit.ModuleBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.AssertionFactory.Jolt#Testing#Assertions#IAssertionFactory#CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            <see cref="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet)"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.AssertionFactory.Jolt#Testing#Assertions#IAssertionFactory#CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)">
+            <summary>
+            <see cref="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlValidityAssertion(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.AssertionFactory.Jolt#Testing#Assertions#IAssertionFactory#CreateXmlEqualityAssertion">
+            <summary>
+            <see cref="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlEqualityAssertion"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.AssertionFactory.Jolt#Testing#Assertions#IAssertionFactory#CreateXmlEquivalencyAssertion(Jolt.Testing.Assertions.XmlComparisonFlags)">
+            <summary>
+            <see cref="M:Jolt.Testing.Assertions.IAssertionFactory.CreateXmlEquivalencyAssertion(Jolt.Testing.Assertions.XmlComparisonFlags)"/>
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor">
+            <summary>
+            Provides information about a type entry in the configuration file
+            that is parsed by the <see cref="T:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor.#ctor(System.Type,System.Collections.Generic.IDictionary{System.Type,System.Type})">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor"/> class.
+            </summary>
+            
+            <param name="realSubjectType">
+            A <see cref="T:System.Type"/> representing the real subject type.
+            </param>
+            
+            <param name="returnTypeOverrides">
+            An <see cref="!:System.Collections.Generic.IDictionary"/> mapping a return type to a
+            desired return type override.
+            </param>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor.RealSubjectType">
+            <summary>
+            Gets the descriptor's real subject type.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor.ReturnTypeOverrides">
+            <summary>
+            Gets the real subject type's return type overrides.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion">
+            <summary>
+            Provides assertion methods for performing user-defined equivalency
+            assertions against two XML structures.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.#ctor(Jolt.Testing.Assertions.XmlComparisonFlags)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> class,
+            accepting the equivalency strictness.
+            </summary>
+            
+            <param name="strictness">
+            An <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> enumeration denoting the definition of
+            equivalency for this instance.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.#cctor">
+            <summary>
+            Initializes the static state of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreEquivalent(System.Xml.XmlReader,System.Xml.XmlReader)">
+             <summary>
+             Compares two <see cref="T:System.Xml.XmlReader"/> objects for equivalency.
+             </summary>
+             
+             <param name="expected">
+             The expected XML, referenced by an <see cref="T:System.Xml.XmlReader"/>.
+             </param>
+             
+             <param name="actual">
+             The XML to validate, referenced by an <see cref="T:System.Xml.XmlReader"/>.
+             </param>
+             
+             <returns>
+             A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+             of the assertion.
+             </returns>
+            
+             <remarks>
+             Equivalency is defined as per the configuration of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>
+             instance.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreEquivalentAndOrdered(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares two <see cref="!:System.Xml.XLinq.XElement"/> objects for equivalency,
+            and verifying that the order of child elements are the same in both XML
+            trees.
+            </summary>
+            
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreEquivalentAndUnordered(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares two <see cref="!:System.Xml.XLinq.XElement"/> objects for equivalency,
+            disregarding the order of child elements both XML trees.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <param name="actual">
+            The XML to validate, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+            
+            <remarks>
+            Orders the elements in the <paramref name="actual"/> XML tree so that the "ordered"
+            version of this algorithm may detect missing elements.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.NormalizeElementOrder_FirstPass(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Orders the child elements of the XML referenced by <paramref name="actual"/>
+            such that their order matches that of the XML referenced by <paramref name="expected"/>.
+            Does not consider a child element's children when searching for a matching reference
+            element.
+            </summary>
+            
+            <param name="expected">
+            An <see cref="!:System.Xml.XLinq.XElement"/> whose child elements define the desired element order.
+            </param>
+            
+            <param name="expected">
+            An <see cref="!:System.Xml.XLinq.XElement"/> whose child elements are to be reordered.
+            </param>
+            
+            <remarks>
+            An element is moved if it is considered equivalent to the reference element as per
+            the configuration of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> instance.  Furthermore,
+            the function returns immediately when an element can not be paired against an existing
+            reference element.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.NormalizeElementOrder_SecondPass(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Orders the child elements of the XML referenced by <paramref name="actual"/>
+            such that their order matches that of the XML referenced by <paramref name="expected"/>.
+            Consider a child element's children when searching for a matching reference element.
+            </summary>
+            
+            <param name="expected">
+            An <see cref="!:System.Xml.XLinq.XElement"/> whose child elements define the desired element order.
+            </param>
+            
+            <param name="expected">
+            An <see cref="!:System.Xml.XLinq.XElement"/> whose child elements are to be reordered.
+            </param>
+            
+            <remarks>
+            An element is moved if it is considered equivalent to the reference element as per
+            the configuration of the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> instance.  Furthermore,
+            the function returns immediately when an element can not be paired against an existing
+            reference element.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.SwapElement``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            <summary>
+            Exchanges the position of two elemens in a given collection.
+            </summary>
+            
+            <typeparam name="TElement">
+            The type of element contained in the given collection.
+            </typeparam>
+            
+            <param name="collection">
+            An <see cref="!:System.Collections.Generic.IList"/> containing the elements to exchange.
+            </param>
+            
+            <param name="firstIndex">
+            The index of the first element to exchange.
+            </param>
+            
+            <param name="secondIndex">
+            The index of the second element to exchange.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreElementsEquivalent(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares two <see cref="!:System.Xml.XLinq.XElement"/> objects for equivalency,
+            disregarding the analysis child elements either XML tree.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <param name="actual">
+            The XML to validate, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreEquivalent(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Adapts <see cref="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.AreElementsEquivalent(System.Xml.Linq.XElement,System.Xml.Linq.XElement)"/> method, returning
+            a Boolean instead of an <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/>.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <param name="actual">
+            The XML to validate, referenced by an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </param>
+            
+            <returns>
+            Returns true if the given elements are equivalent, false otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.CompareAttributes(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares the attributes two <see cref="!:System.Xml.XLinq.XElement"/> objects for equivalency.
+            </summary>
+            
+            <param name="expected">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing the expected set of attributes.
+            </param>
+            
+            <param name="actual">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing the attributes to validate.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.CreateAttributeEnumerator(System.Xml.Linq.XElement)">
+            <summary>
+            Creates a new instance of an <see cref="!:System.Collections.Generic.IEnumerator"/> for
+            enumerating the attributes of a given <see cref="!:System.Xml.XLinq.XElement"/>.
+            </summary>
+            
+            <param name="element">
+            The <see cref="!:System.Xml.XLinq.XElement"/> whose attributes are enumerated.
+            </param>
+            
+            <returns>
+            The requested enumerator, which enumerates the attributes of <paramref name="element"/>.
+            </returns>
+            
+            <remarks>
+            The returned enumerator ignores namespace declarations and enumerates attributes
+            by name-sorted order.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.ContainsFlag(Jolt.Testing.Assertions.XmlComparisonFlags,Jolt.Testing.Assertions.XmlComparisonFlags)">
+            <summary>
+            Determines if an enumeration value is contained in an
+            <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> enumeration.
+            </summary>
+            
+            <param name="flag">
+            The <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> value to search for.
+            </param>
+            
+            <param name="value">
+            The <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> that is queried.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.CompareAttributeNamespaces(System.Xml.Linq.XAttribute,System.Xml.Linq.XAttribute,System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares the namespaces of two <see cref="!:System.Xml.XLinq.XAttribute"/> objects for equality.
+            </summary>
+            
+            <param name="expected">
+            The <see cref="!:System.Xml.XLinq.XAttribute"/>  containing the expected namespace value.
+            </param>
+            
+            <param name="actual">
+            The <see cref="!:System.Xml.XLinq.XAttribute"/> containing the namespace value to validate.
+            </param>
+            
+            <param name="expectedElement">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing <paramref name="expected"/>.
+            </param>
+            
+            <param name="actualElement">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing <paramref name="actual"/>.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.CompareElementNamespaces(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares the namespaces of two <see cref="!:System.Xml.XLinq.XElement"/> objects for equality.
+            </summary>
+            
+            <param name="expected">
+            The <see cref="!:System.Xml.XLinq.XElement"/>  containing the expected namespace value.
+            </param>
+            
+            <param name="actual">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing the namespace value to validate.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.CompareElementValues(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Compares the element-values of two <see cref="!:System.Xml.XLinq.XElement"/> objects for equality.
+            </summary>
+            
+            <param name="expected">
+            The <see cref="!:System.Xml.XLinq.XElement"/>  containing the expected value.
+            </param>
+            
+            <param name="actual">
+            The <see cref="!:System.Xml.XLinq.XElement"/> containing the value to validate.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the comparison.
+            </returns>
+            
+            <remarks>
+            The value of an element is defined as the concatenation of an element's child text nodes.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEquivalencyAssertion.GetElementValue(System.Xml.Linq.XElement)">
+            <summary>
+            Gets the element-value of an <see cref="!:System.Xml.XLinq.XElement"/>.
+            </summary>
+            
+            <param name="element">
+            The <see cref="!:System.Xml.XLinq.XElement"/> whose value is retrieved.
+            </param>
+            
+            <returns>
+            A string representing the element value - a concatenation of the the child text nodes
+            of <paramref name="element"/>.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlEquivalencyAssertion.ComparisonFlags">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> associated with <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>
+            instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.GenericConstructorDeclarer">
+            <summary>
+            Defines a concrete <see cref="!:AbstractMethodDeclarer"/> class that creates
+            <see cref="T:System.Reflection.Emit.ConstructorBuilder"/> objects for generic
+            constructors on the proxy type.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.GenericConstructorDeclarer.#ctor(System.Reflection.Emit.TypeBuilder,System.Reflection.MethodAttributes,System.Reflection.ConstructorInfo,Jolt.Testing.CodeGeneration.IMethodDeclarerImpl{System.Reflection.Emit.ConstructorBuilder,System.Reflection.ConstructorInfo})">
+            <see cref="!:AbstractMethodDeclarer&lt;ConstructorBuilder, ConstructorInfo&gt;.ctor(TypeBuilder, MethodInfo, ConstructorInfo, AbstractMethodDeclarerImpl&lt;ConstructorBuilder, ConstructorInfo&gt;"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.GenericConstructorDeclarer.Declare">
+            <see cref="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.GenericConstructorDeclarer.Declare(System.Type)">
+             <summary>
+             Not supported since a constructor does not have a return type.
+             </summary>
+            
+             <exception cref="T:System.InvalidOperationException">
+             Any invocation.
+             </exception>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator">
+            <summary>
+            Defines for interpreting the XML configuration of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyAssemblyBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator.#cctor">
+            <summary>
+            Initializes the static state of the <see cref="T:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator.LoadRealSubjectTypes(System.IO.Stream)">
+            <summary>
+            Interprets a given XML configuration stream, enumerating its referenced
+            real subject types, represented by <see cref="T:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor"/> objects.
+            </summary>
+            
+            <param name="xmlConfiguration">
+            A <see cref="T:System.IO.Stream"/>  containing the XML configuration
+            of the real subject types.
+            </param>
+            
+            <retuns>
+            A new <see cref="!:System.Collections.Generic.IEnumerable"/> to enumerate
+            <see cref="T:Jolt.Testing.CodeGeneration.Xml.TypeDescriptor"/> objects.
+            </retuns>
+            
+            <remarks>
+            <paramref name="xmlConfiguration"/> is not closed by this function.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.Xml.XmlConfigurator.LoadType(System.Xml.Linq.XAttribute,System.Type@)">
+            <summary>
+            Loads the <see cref="T:System.Type"/> described by the given <see cref="!:System.Xml.XLinq.XAttribute"/>,
+            logging a warning if the type can not be loaded.
+            </summary>
+            
+            <param name="typeAttribute">
+            An <see cref="!:System.Xml.XLinq.XAttribute"/> containing the name of the type to load.
+            </param>
+            
+            <param name="type">
+            Contains the loaded <see cref="T:System.Type"/>, or a null value if the loading is not successful.
+            </param>
+            
+            <returns>
+            Returns true if the <paramref name="Type"/> is successfully loaded, false otherwise.
+            </returns>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.NonGenericMethodDeclarerImpl">
+            <summary>
+            Implements the <see cref="!:IMethodDeclarerImpl"/> contract and provides methods
+            to declare a non-generic method.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.NonGenericMethodDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#MethodBuilder@System#Reflection#MethodInfo}#DeclareMethod(System.Reflection.Emit.MethodBuilder,System.Reflection.MethodInfo,System.Type)">
+            <see cref="!:IMethodDeclarerImpl&lt;MethodBuilder, MethodInfo&gt;.DeclareMethod(MethodBuilder, MethodInfo, Type&gt;"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.NonGenericMethodDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#MethodBuilder@System#Reflection#MethodInfo}#DefineMethodParameters(System.Reflection.Emit.MethodBuilder,System.Reflection.MethodInfo)">
+            <see cref="!:IMethodDeclarerImpl&lt;MethodBuilder, MethodInfo&gt;.DefineMethodParameters(MethodBuilder, MethodInfo&gt;"/>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.XmlValidityAssertion">
+            <summary>
+            Provides assertion methods that validate XML against a schema set.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlValidityAssertion.#ctor(System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class,
+            treating all validation warnings as errors.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the desired valid XML structure.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlValidityAssertion.#ctor(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> class,
+            and configures the validator with a given set of rules.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the valid XML structure.
+            </param>
+            
+            <param name="validationFlags">
+            An <see cref="T:System.Xml.Schema.XmlSchemaValidationFlags"/> enumeration that configures the XML validator.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlValidityAssertion.Validate(System.Xml.XmlReader)">
+            <summary>
+            Validates the document contained in the given reader, according
+            to the configuration of the assertion class.
+            </summary>
+            
+            <param name="reader">
+            The <see cref="T:System.Xml.XmlReader"/> to validate.
+            </param>
+            
+            <returns>
+            Returns a new <see cref="!:System.Collections.Generic.IList"/> containing each
+            validation error raised during the validation process.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlValidityAssertion.CreateReaderSettings(System.Xml.Schema.ValidationEventHandler)">
+            <summary>
+            Creates the <see cref="T:System.Xml.XmlReaderSettings"/> required to perform the validation
+            as prescribed by the configuration of the class.
+            </summary>
+            
+            <param name="validationEventHandler">
+            The <see cref="T:System.Xml.Schema.ValidationEventHandler"/> that is associated with the created
+            reader settings.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="!:XmlReaderSetting"/> class, intialized with
+            <paramref name="validationEventHandler"/>, and the configured schemas and validation
+            flags.
+            </returns>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.XmlComparisonFlags">
+            <summary>
+            Controls the level of equivalency strictness when applied to the
+            <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> class.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.MethodDeclarer">
+            <summary>
+            Defines a concrete <see cref="!:AbstractMethodDeclarer"/> class that creates
+            <see cref="T:System.Reflection.Emit.MethodBuilder"/> objects for declaring methods.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarer.#ctor(System.Reflection.Emit.TypeBuilder,System.Reflection.MethodAttributes,System.Reflection.MethodInfo,Jolt.Testing.CodeGeneration.IMethodDeclarerImpl{System.Reflection.Emit.MethodBuilder,System.Reflection.MethodInfo})">
+            <see cref="!:AbstractMethodDeclarer&lt;MethodBuilder, MethodInfo&gt;.ctor(TypeBuilder, MethodInfo, AbstractMethodDeclarerImpl&lt;MethodBuilder,  MethodInfo&gt;"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarer.Declare">
+            <see cref="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.MethodDeclarer.Declare(System.Type)">
+            <see cref="M:Jolt.Testing.CodeGeneration.AbstractMethodDeclarer`2.Declare(System.Type)"/>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.DeclarationHelper">
+            <summary>
+            Contains helper methods facilitating in the declaration of types and methods.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.DeclarationHelper.DefineParametersWith(System.Func{System.Int32,System.Reflection.ParameterAttributes,System.String,System.Reflection.Emit.ParameterBuilder},System.Reflection.ParameterInfo[])">
+            <summary>
+            Defines a method's parameters by invoking a custom parameter definition
+            delegate.
+            </summary>
+            
+            <param name="defineParameter">
+            The delegate that defines a parameter on an implicit method.
+            </param>
+            
+            <param name="parameters">
+            The <see cref="T:System.Reflection.ParameterInfo"/> objects that model the
+            paramters to define.
+            </param>
+            
+            <remarks>
+            The parameters are defined in the order given be <paramref name="parameters"/>,
+            and contain the same name and attributes as those in <paramref name="parameters"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.DeclarationHelper.ContainsGenericParameters(System.Reflection.ParameterInfo[])">
+            <summary>
+            Determines if a given <see cref="T:System.Reflection.ParameterInfo"/> collection
+            contains at least one generic parameter.
+            </summary>
+            
+            <param name="parameters">
+            The <see cref="T:System.Reflection.ParameterInfo"/> collection to search.
+            </param>
+            
+            <returns>
+            Returns true if at least one element of <see cref="T:System.Reflection.ParameterInfo"/>
+            has a generic parameter type.
+            </returns>
+            
+            <remarks>
+            Used in-place of <see cref="P:System.Reflection.MethodBase.ContainsGenericParameters"/>
+            as this property is not supported in all derivations <see cref="T:System.Reflection.MethodBase"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.DeclarationHelper.CopyTypeConstraints(System.Type[],System.Reflection.Emit.GenericTypeParameterBuilder[])">
+            <summary>
+            Applies generic type constraints to a given collection of
+            <see cref="T:System.Reflection.Emit.GenericTypeParameterBuilder"/> objects.
+            </summary>
+            
+            <param name="sourceTypes">
+            The generic <see cref="T:System.Type"/> objects containing the type
+            constraints to copy.
+            </param>
+            
+            <param name="targetTypes">
+            The <see cref="T:System.Reflection.Emit.GenericTypeParameterBuilder"/> objects
+            to which the type constraints are copied to.
+            </param>
+            
+            <remarks>
+            Requires that the length of <paramref name="targetTypes"/> is at least the length
+            of <paramref name="sourceTypes"/>.
+            </remarks>
+        </member>
+        <member name="T:Jolt.Testing.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_AttributeNamespaceMismatch">
+             <summary>
+               Looks up a localized string similar to Unexpected namespace in attribute &apos;{0}&apos; from element &apos;{1}&apos;.
+            Expected: {2}
+            Actual: {3}.
+             </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_AttributeQuantityMismatch">
+            <summary>
+              Looks up a localized string similar to Element &apos;{0}&apos; differs in number of attributes..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_AttributeValueMismatch">
+             <summary>
+               Looks up a localized string similar to Unexpected value in attribute &apos;{0}&apos; from element &apos;{1}&apos;.
+            Expected: {2}
+            Actual: {3}.
+             </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_ChildElementQuantityMismatch">
+            <summary>
+              Looks up a localized string similar to Element &apos;{0}&apos; differs in number of child elements..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_ElementNamespaceMismatch">
+             <summary>
+               Looks up a localized string similar to Unexpected namespace in element &apos;{0}&apos;.
+            Expected: {1}
+            Actual: {2}.
+             </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_ElementValueMismatch">
+             <summary>
+               Looks up a localized string similar to Unexpected value in element &apos;{0}&apos;.
+            Expected: {1}
+            Actual: {2}.
+             </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_UnexpectedAttribute">
+            <summary>
+              Looks up a localized string similar to Unexpected attribute &apos;{0}&apos; found in element &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.AssertionFailure_UnexpectedElement">
+             <summary>
+               Looks up a localized string similar to Unexpected element.
+            Expected: {0}
+            Actual: {1}.
+             </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_DelayedConstructorDeclaration">
+            <summary>
+              Looks up a localized string similar to The constructor of type &apos;{0}&apos; must be declared at the same time its corresponding ConstructorBuilder is created..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_DuplicateMember">
+            <summary>
+              Looks up a localized string similar to Duplicate method, property, or event detected within a type..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_InstanceMethodAddedFromAbstractType">
+            <summary>
+              Looks up a localized string similar to Can not add non-static method &apos;{0}&apos; to the proxy builder as the real subject type is abstract..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_InvalidProperty">
+            <summary>
+              Looks up a localized string similar to The property &apos;{0}&apos; has neither a public getter or a public setter..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_InvalidProperty_ReturnTypeOverride">
+            <summary>
+              Looks up a localized string similar to Can not override the return type from the property &apos;{0}&apos; because the property contains a setter method..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_InvalidRealSubjectType">
+            <summary>
+              Looks up a localized string similar to The real subject type &apos;{0}&apos; is invalid.  It can not be a delegate or interface type..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_InvalidReturnTypeOverride">
+            <summary>
+              Looks up a localized string similar to Can not override the return type from method &apos;{0}&apos; as the desired type &apos;{1}&apos; is not a base type of the method return type &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_MemberNotPublic">
+            <summary>
+              Looks up a localized string similar to The proxy builder can only accept public methods, properties, and events..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_MethodNotMemberOfRealSubject">
+            <summary>
+              Looks up a localized string similar to The method &apos;{0}&apos; does not belong to the proxy builder&apos;s real subject type..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_OverrideCtorReturnType">
+            <summary>
+              Looks up a localized string similar to Can not override the return type of a constructor as a constructor does not have a return value..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Error_RealSubjectType_LackingConstructor">
+            <summary>
+              Looks up a localized string similar to The non-abstract real subject type &apos;{0}&apos; requires at least one public constructor..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Info_SkipDefinedEventMethod">
+            <summary>
+              Looks up a localized string similar to The method &apos;{0}&apos; was not included as part of the proxy type as it is already defined as an event..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Info_SkipDefinedPropertyMethod">
+            <summary>
+              Looks up a localized string similar to The method &apos;{0}&apos; was not included as part of the proxy type as it is already defined as a property..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Info_XmlDocCommentsDisabled">
+            <summary>
+              Looks up a localized string similar to Could not locate XML doc comments file for assembly &apos;{0}&apos;.  Procuction of XML doc comments is disabled..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Warn_IgnoreReturnTypeOverride_Ambiguous">
+            <summary>
+              Looks up a localized string similar to Ignoring return type override &apos;{0}&apos;-&gt;&apos;{1}&apos;.  An override for the return type &apos;{0}&apos; on the real subject type &apos;{2}&apos; is already specified..
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Properties.Resources.Warn_TypeNotLoaded">
+            <summary>
+              Looks up a localized string similar to Could not load the type &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder">
+            <summary>
+            Defines a concrete implementation of the <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> class,
+            incrementally constructing an XML doc comments file pertaining to the members of a proxy
+            and interface type.  Transforms a given set of XML doc comments for a real subject type,
+            to XML doc comments suitable for a corresponding proxy and interface type.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.#ctor(Jolt.IXmlDocCommentReader,System.Type,System.Type,System.Type)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder"/> class
+            </summary>
+            
+            <param name="reader">
+            A <see cref="T:Jolt.IXmlDocCommentReader"/> that retrieves the reference set of XML doc
+            comments, for a real subject type.
+            </param>
+            
+            <param name="realSubectType">
+            The <see cref="T:System.Type"/> whose assembly is referenced by <paramref name="reader"/>, and from which
+            the proxy and interface types are modelled after.
+            </param>
+            
+            <param name="proxyType">
+            The proxy type to document.
+            </param>
+            
+            <param name="proxyInterfaceType">
+            The proxy interface type to document.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.AddConstuctor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Adds the proxy and interface documentation for a given
+            <see cref="T:System.Reflection.ConstructorInfo"/> to the builder.
+            </summary>
+            
+            <param name="constructor">
+            The <see cref="T:System.Reflection.ConstructorInfo"/> whose documentation is transformed.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.AddEvent(System.Reflection.EventInfo)">
+            <summary>
+            Adds the proxy and interface documentation for a given
+            <see cref="T:System.Reflection.EventInfo"/> to the builder.
+            </summary>
+            
+            <param name="eventInfo">
+            The <see cref="T:System.Reflection.EventInfo"/> whose documentation is transformed.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.AddMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Adds the proxy and interface documentation for a given
+            <see cref="T:System.Reflection.MethodInfo"/> to the builder.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> whose documentation is transformed.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.AddProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Adds the proxy and interface documentation for a given
+            <see cref="T:System.Reflection.PropertyInfo"/> to the builder.
+            </summary>
+            
+            <param name="property">
+            The <see cref="T:System.Reflection.PropertyInfo"/> whose documentation is transformed.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.TransformAndAddComments(System.Xml.Linq.XElement,System.Type)">
+            <summary>
+            Tranforms the given member <see cref="!:System.Xml.XLinq.XElement"/> documentation node
+            into two <see cref="!:System.Xml.XLinq.XElement"/> nodes that respectively represent the
+            member documentation nodes for the proxy and proxy interface types.
+            </summary>
+            
+            <param name="memberElement">
+            The member <see cref="!:System.Xml.XLinq.XElement"/> documentation to transform.
+            </param>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> whose member is referenced by <paramref name="memberElement"/>.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.ReplaceTypeName(System.Xml.Linq.XElement,System.Type,System.Type)">
+            <summary>
+            Replaces the XML doc comment encoded type name of a given documentation node
+            with the encoded type name of another given <see cref="T:System.Type"/>.
+            </summary>
+            
+            <param name="memberElement">
+            The <see cref="!:System.Xml.XLinq.XElement"/> whose name attribute is modified.
+            </param>
+            
+            <param name="typeToReplace">
+            The <see cref="T:System.Type"/> whose name is referenced by <paramref name="memberElement"/>.
+            </param>
+            
+            <param name="newType">
+            The new <see cref="T:System.Type"/> whose name is encoded and replaces the name attribute
+            of <paramref name="memberElement"/>
+            </param>
+            
+            <returns>
+            A reference to <paramref name="memberElement"/>, after it has been modified.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.XmlDocCommentBuilder.XmlDocCommentReader">
+            <summary>
+            Gets the <see cref="T:Jolt.IXmlDocCommentReader"/> associated with the instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder">
+            <summary>
+            Provides methods to dynamically reverse engineer a proxy and accompanying
+            interface for a given type.  The proxy and interface are created in a given
+            namespace, which is appended to the namespace of the real subject type.
+            </summary>
+            
+            <example>
+            If the namespace "Jolt.Testing.Generated" is given to the builder, along with
+            the real subject type System.String, the generated proxy and interface are created
+            in the "Jolt.Testing.Generated.System" namespace.
+            </example>
+            
+            <remarks>
+            For a given type named SubjectType:
+            The generated inteface is named ISubjectType.
+            The generated proxy is named SubjectTypeProxy.
+            </remarks>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.IProxyTypeBuilder">
+            <summary>
+            Internal interface to support testing of objects that
+            have/use a <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.#ctor(System.String,System.Type)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> class,
+            with a transient assembly in the current appdomain.
+            </summary>
+            
+            <param name="rootNamespace">
+            The namespace in which all types are created.
+            </param>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> of object for which the proxy forwards to.
+            </param>
+            
+            <remarks>
+            Does not produce XML doc comments for generated types.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.#ctor(System.String,System.Type,System.Boolean)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> class,
+            with a transient assembly in the current appdomain, optionally producing
+            XML doc comments.
+            </summary>
+            
+            <param name="rootNamespace">
+            The namespace in which all types are created.
+            </param>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> of object for which the proxy forwards to.
+            </param>
+            
+            <param name="produceXmlDocComments">
+            Determines if the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> should attempt to produce
+            XML doc comments for each generated type.
+            </param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.#ctor(System.String,System.Type,System.Boolean,System.Reflection.Emit.ModuleBuilder)" -->
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.#ctor(System.String,System.Type,System.Func{System.Type,System.Type,System.Type,Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase},System.Reflection.Emit.ModuleBuilder)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> class,
+            with a user-specified <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> factory
+            method and <see cref="T:System.Reflection.Emit.ModuleBuilder"/>.
+            </summary>
+            
+            <param name="rootNamespace">
+            The namespace in which all types are created.
+            </param>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> of object for which the proxy forwards to.
+            </param>
+            
+            <param name="createXDCBuilder">
+            A delegate containing a factory method for creating the proxy
+            builder's <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/>.
+            </param>
+            
+            <param name="targetModule">
+            The <see cref="T:System.Reflection.Emit.ModuleBuilder"/> in which the types are created.
+            </param>
+            
+            <remarks>
+            Used internally by test code to override
+            <see cref="T:System.Reflection.Emit.ModuleBuilder"/> and <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/>
+            operations.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Adds a <see cref="T:System.Reflection.MethodInfo"/> to the proxy builder.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to add to the builder.
+            </param>
+            
+            <remarks>
+            Equivalent to calling <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddMethod(System.Reflection.MethodInfo,System.Type)"/> with the
+            implict returnm type of <paramref name="method"/>.
+            </remarks>
+            
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="method"/> is null.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="method"/> is not public.
+            <paramref name="method"/> is not a member of the builder's real subject type.
+            <paramref name="method"/> is not static but the builder's real subject type is abstract.
+            <paramref name="desiredReturnType"/> is not a base type of the return type of <paramref name="method"/>.
+            </exception>
+            
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddMethod(System.Reflection.MethodInfo,System.Type)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddMethod(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Adds a <see cref="T:System.Reflection.MethodInfo"/> to the proxy builder,
+            overriding the given method's return <see cref="T:System.Type"/>.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to add to the builder.
+            </param>
+            
+            <param name="desiredReturnType">
+            The <see cref="T:System.Type"/> of the return value on the builder's generated method.
+            </param>
+            
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="method"/> is null.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="method"/> is not public.
+            <paramref name="method"/> is not a member of the builder's real subject type.
+            <paramref name="method"/> is not static but the builder's real subject type is abstract.
+            <paramref name="desiredReturnType"/> is not a base type of the return type of <paramref name="method"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddProperty(System.Reflection.PropertyInfo)">
+             <summary>
+             Adds a <see cref="T:System.Reflection.PropertyInfo"/> to the proxy builder.
+             </summary>
+             
+             <param name="property">
+             The <see cref="T:System.Reflection.PropertyInfo"/> to add to the builder.
+             </param>
+             
+             <remarks>
+             Equivalent to calling <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddProperty(System.Reflection.PropertyInfo,System.Type)"/> with the
+             implict property type of <paramref name="property"/>.
+             </remarks>
+             
+             <exception cref="T:System.ArgumentNullException">
+             <paramref name="property"/> is null.
+             </exception>
+             
+             <exception cref="T:System.NotSupportedException">
+             <paramref name="property"/> does not define a get or set method.
+             </exception>
+             
+             <exception cref="T:System.InvalidOperationException">
+             <paramref name="property"/> defines a set method whose return type does not
+             match <paramref name="desiredReturnType"/>.
+             </exception>
+             
+             <exception cref="T:System.InvalidOperationException">
+             <paramref name="property"/> is not a member of the builder's real subject type.
+             <paramref name="property"/> is not static but the builder's real subject type is abstract.
+             <paramref name="desiredReturnType"/> is not a base type of the property type of <paramref name="property"/>.
+             </exception>
+            
+             <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddProperty(System.Reflection.PropertyInfo,System.Type)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddProperty(System.Reflection.PropertyInfo,System.Type)">
+            <summary>
+            Adds a <see cref="T:System.Reflection.PropertyInfo"/> to the proxy builder,
+            overriding its return <see cref="T:System.Type"/> on the get method.
+            </summary>
+            
+            <param name="property">
+            The <see cref="T:System.Reflection.PropertyInfo"/> to add to the builder.
+            </param>
+            
+            <param name="desiredReturnType">
+            The <see cref="T:System.Type"/> of the return value on the builder's generated get method.
+            </param>
+            
+            <remarks>
+            It is an error to provide a return type override for a property with a set method.
+            </remarks>
+            
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="property"/> is null.
+            </exception>
+            
+            <exception cref="T:System.NotSupportedException">
+            <paramref name="property"/> does not define a get or set method.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="property"/> defines a set method whose return type does not
+            match <paramref name="desiredReturnType"/>.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="property"/> is not a member of the builder's real subject type.
+            <paramref name="property"/> is not static but the builder's real subject type is abstract.
+            <paramref name="desiredReturnType"/> is not a base type of the property type of <paramref name="property"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddEvent(System.Reflection.EventInfo)">
+            <summary>
+            Adds an <see cref="T:System.Reflection.EventInfo"/> to the proxy builder.
+            </summary>
+            
+            <param name="eventInfo">
+            The <see cref="T:System.Reflection.EventInfo"/> to add to the builder.
+            </param>
+            
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="eventInfo"/> is null.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="eventInfo"/> is not public.
+            <paramref name="eventInfo"/> is not a member of the builder's real subject type.
+            <paramref name="eventInfo"/> is not static but the builder's real subject type is abstract.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateInterface">
+            <summary>
+            Creates the proxy interface <see cref="T:System.Type"/> object.
+            </summary>
+            
+            <returns>
+            A new instance of the proxy interface <see cref="T:System.Type"/>, as per the
+            current state of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateProxy">
+            <summary>
+            Creates the proxy interface and proxy <see cref="T:System.Type"/> objects.
+            </summary>
+            
+            <returns>
+            A new instance of the proxy <see cref="T:System.Type"/>, as per the
+            current state of the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>.
+            </returns>
+            
+            <remarks>
+            The proxy interface is is also created as it is required to complete the
+            declaration of the proxy type.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateXmlDocCommentReader">
+            <summary>
+            Creates a new <see cref="T:System.Xml.XmlReader"/> capable of reading any produced XML doc comments.
+            </summary>
+            
+            <returns>
+            A <see cref="T:System.Xml.XmlReader"/> for reading the builder's XML doc comments.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.InitializeProxyConstructors">
+            <summary>
+            Initializes the required constructors on the proxy type.
+            </summary>
+            
+            <remarks>
+            Copies all public constructors from the real subject type to the proxy type.
+            Initializes each proxy constructor to forward to the real subject's respective constructor.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.DefineInterfaceAndProxyMethod(System.Reflection.MethodInfo,System.Type)">
+             <summary>
+             Defines and implements a method on the proxy interface and proxy types,
+             modelling a given <see cref="T:System.Reflection.MethodInfo"/>.
+             </summary>
+             
+             <param name="method">
+             The <see cref="T:System.Reflection.MethodInfo"/> from which the builder
+             will base its definitions.
+             </param>
+             
+             <param name="methodReturnType">
+             The return <see cref="T:System.Type"/> for the generated methods, overriding
+             the return type of the given method.
+             </param>
+            
+             <remarks>
+             Assumes that the method has been validated prior to the call.
+             </remarks>
+             
+             <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)"/>
+             <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ThrowOnNullMember(System.Reflection.MemberInfo)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.DefineInterfaceAndProxyMethod(System.Reflection.MethodInfo,System.Type,System.Reflection.Emit.MethodBuilder@,System.Reflection.Emit.MethodBuilder@)">
+            <summary>
+            Defines and implements a method on the proxy interface and proxy types,
+            returning the respective <see cref="T:System.Reflection.Emit.MethodBuilder"/> objects,
+            modelling a given <see cref="T:System.Reflection.MethodInfo"/>.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> from which the builder
+            will base its definitions.
+            </param>
+            
+            <param name="methodReturnType">
+            The return <see cref="T:System.Type"/> for the generated methods, overriding
+            the return type of the given method.
+            </param>
+            
+            <param name="interfaceMethodBuilder">
+            The <see cref="T:System.Reflection.Emit.MethodBuilder"/> for the interface method,
+            constructred by this method.
+            </param>
+            
+            <param name="proxyMethodBuilder">
+            The <see cref="T:System.Reflection.Emit.MethodBuilder"/> for the proxy method,
+            constructed by this method.
+            </param>
+            
+            <remarks>
+            Assumes that the method has been validated prior to the call.
+            </remarks>
+            
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)"/>
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ThrowOnNullMember(System.Reflection.MemberInfo)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Verifies that the given <see cref="T:System.Reflection.MethodInfo"/> is legal
+            as input into the builder.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to validate.
+            </param>
+            
+            <param name="desiredReturnType">
+            The desired <see cref="T:System.Type"/> of the return value on the builder's generated method.
+            </param>
+            
+            <remarks>
+            Invokes <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateAccessibleMethod(System.Reflection.MethodInfo,System.Type)"/> after confirming that <paramref name="method"/>
+            is publicly accessible.
+            </remarks>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="method"/> is not public.
+            </exception>
+            
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateAccessibleMethod(System.Reflection.MethodInfo,System.Type)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateAccessibleMethod(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Verifies that the given public <see cref="T:System.Reflection.MethodInfo"/>
+            is legal as input into the builder.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to validate.
+            </param>
+            
+            <param name="desiredReturnType">
+            The desired <see cref="T:System.Type"/> of the return value on the builder's generated method.
+            </param>
+            
+            <exception cref="T:System.ArgumentException">
+            A method with a signature matching <paramref name="method"/> has already been
+            added to the builder.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="method"/> is not a member of the builder's real subject type.
+            <paramref name="method"/> is not static but the builder's real subject type is abstract.
+            <paramref name="desiredReturnType"/> is not a base type of the return type of <paramref name="method"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateProperty(System.Reflection.PropertyInfo,System.Type)">
+            <summary>
+            Verifies that the given <see cref="T:System.Reflection.PropertyInfo"/> is legal as
+            input into the builder.
+            </summary>
+            
+            <param name="property">
+            The <see cref="T:System.Reflection.PropertyInfo"/> to validate.
+            </param>
+            
+            <param name="desiredReturnType">
+            The desired <see cref="T:System.Type"/> of the return value on the builder's generated get method.
+            </param>
+            
+            <remarks>
+            Validates the get and set methods of <paramref name="property"/>
+            as per the rules in <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateAccessibleMethod(System.Reflection.MethodInfo,System.Type)"/>.
+            </remarks>
+            
+            <exception cref="T:System.NotSupportedException">
+            <paramref name="property"/> does not define a get or set method.
+            </exception>
+            
+            <exception cref="T:System.InvalidOperationException">
+            <paramref name="property"/> defines a set method whose return type does not
+            match <paramref name="desiredReturnType"/>.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateEvent(System.Reflection.EventInfo)">
+            <summary>
+            Verifies that the given <see cref="T:System.Reflection.EventInfo"/> is legal as
+            input into the builder.
+            </summary>
+            
+            <param name="eventInfo">
+            The <see cref="T:System.Reflection.EventInfo"/> to validate.
+            </param>
+            
+            <remarks>
+            Validates the add and remove methods of <paramref name="eventInfo"/>
+            as per the rules in <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddMethod_NonNull(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Adds a non-null <see cref="T:System.Reflection.MethodInfo"/> to the proxy builder.
+            </summary>
+            
+            <param name="method">
+            The <see cref="T:System.Reflection.MethodInfo"/> to add to the builder.
+            </param>
+            
+            <param name="desiredReturnType">
+            The <see cref="T:System.Type"/> of the return value for the builder's generated method.
+            </param>
+            
+            <remarks>
+            Validates <paramref name="method"/> as per the rules in <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)"/>.
+            </remarks>
+            
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateMethod(System.Reflection.MethodInfo,System.Type)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.AddProperty_NonNull(System.Reflection.PropertyInfo,System.Type)">
+            <summary>
+            Adds a non-null <see cref="T:System.Reflection.PropertyInfo"/> to the proxy builder.
+            </summary>
+            
+            <param name="property">
+            The <see cref="T:System.Reflection.PropertyInfo"/> to add to the builder.
+            </param>
+            
+            <param name="desiredReturnType">
+            The <see cref="T:System.Type"/> of the return value for the builder's generated get method.
+            </param>
+            
+            <remarks>
+            Validates <paramref name="property"/> as per the rules in <see cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateProperty(System.Reflection.PropertyInfo,System.Type)"/>.
+            It is an error to provide a return type override for a property with a set method.
+            </remarks>
+            
+            <seealso cref="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateProperty(System.Reflection.PropertyInfo,System.Type)"/>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateXmlDocCommentBuilder(System.Type,System.Type,System.Type)">
+            <summary>
+            Creates an <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> for a real subject type.
+            </summary>
+            
+            <param name="realSubjectType">
+            The real subject type for which the <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/>
+            is created.
+            </param>
+            
+            <param name="proxyType">
+            The <see cref="T:System.Type"/> containing the generated proxy.
+            </param>
+            
+            <param name="proxyInterfaceType">
+            The <see cref="T:System.Type"/> containing the generated proxy interface.
+            </param>
+            
+            <returns>
+            A new instance of an <see cref="P:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.XmlDocCommentBuilder"/>, when XML doc comments
+            exist for the assembly of <paramref name="realSubjectType"/>, or a new instance
+            of <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> otherwise.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.InitializeGenericTypeArguments(System.Type[],System.Reflection.Emit.TypeBuilder)">
+            <summary>
+            Initializes the generic type arguments of a given
+            <see cref="T:System.Reflection.Emit.TypeBuilder"/>.
+            </summary>
+            
+            <param name="genericTypeArguments">
+            The generic arguments to model.
+            </param>
+            
+            <param name="typeBuilder">
+            The TypeBuilder (proxy or proxyInterface) to initialize.
+            </param>
+            
+            <returns>
+            A reference to the newly initialized generic type arguments.
+            </returns>
+            
+            <remarks>
+            Copies <paramref name="genericTypeArguments"/> (of the real subject type)
+            to <paramref name="typeBuilder"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ThrowOnNullMember(System.Reflection.MemberInfo)">
+            <summary>
+            Throws an exception when the given parameter is null.
+            </summary>
+            
+            <param name="member">
+            The <see cref="T:System.Reflection.MemberInfo"/> to validate.
+            </param>
+            
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="member"/> is null.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.EmitObjectDefaultConstructorCall(System.Reflection.Emit.ILGenerator)">
+            <summary>
+            Emits a call to the default <see cref="T:System.Object"/> constructor, using
+            a given <see cref="T:System.Reflection.Emit.ILGenerator"/>.
+            </summary>
+            
+            <param name="codeGenerator">
+            The <see cref="T:System.Reflection.Emit.ILGenerator"/> that emits the constructor call.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ValidateRealSubjectType(System.Type)">
+            <summary>
+            Verifies that a real subject type is valid input for a <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>.
+            </summary>
+            
+            <param name="realSubjectType">
+            The <see cref="T:System.Type"/> to validate.
+            </param>
+            
+            <exception cref="T:System.NotSupportedException">
+            <paramref name="realSubjectType"/> is an interface, delegate, or a non-abstract
+            class with no public constructors.
+            </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateProxyName(System.String,System.Type)">
+            <summary>
+            Creates the namespace-qualified name of the proxy type.
+            </summary>
+            
+            <param name="rootNamespace">
+            The namespace in which the proxy type will exist.
+            </param>
+            
+            <param name="realSubjectType">
+            The real subject type from which the name is derived.
+            </param>
+            
+            <returns>
+            A new <see cref="T:System.String"/> representing the requested type name.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.CreateInterfaceName(System.String,System.Type)">
+            <summary>
+            Creates the namespace-qualified name of the interface type.
+            </summary>
+            
+            <param name="rootNamespace">
+            The namespace in which the interface type will exist.
+            </param>
+            
+            <param name="realSubjectType">
+            The real subject type from which the name is derived.
+            </param>
+            
+            <returns>
+            A new <see cref="T:System.String"/> representing the requested type name.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.NormalizeTypeName(System.String)">
+            <summary>
+            Removes a substring starting with the ` character from a given string.
+            </summary>
+            
+            <param name="typeName">
+            The string to normalize.
+            </param>
+            
+            <returns>
+            A new <see cref="T:System.String"/> equal to <paramref name="typeName"/> with the
+            identified substring removed.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ProxiedType">
+            <summary>
+            Gets the real subject <see cref="T:System.Type"/> referenced by the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.Module">
+            <summary>
+            Gets the <see cref="T:System.Reflection.Emit.ModuleBuilder"/> that owns the generated types.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.ProducesXmlDocComments">
+            <summary>
+            Determines if the <see cref="T:Jolt.Testing.CodeGeneration.ProxyTypeBuilder"/> produces XML doc comments.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.CodeGeneration.ProxyTypeBuilder.XmlDocCommentBuilder">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.CodeGeneration.XmlDocCommentBuilderBase"/> used by this instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.CodeGeneration.ConstructorDeclarerImpl">
+            <summary>
+            Implements the <see cref="!:IMethodDeclarerImpl"/> contract for
+            <see cref="T:System.Reflection.ConstructorInfo"/> types.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ConstructorDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#ConstructorBuilder@System#Reflection#ConstructorInfo}#DeclareMethod(System.Reflection.Emit.ConstructorBuilder,System.Reflection.ConstructorInfo,System.Type)">
+             <summary>
+             Not supported since declaration and definition of a <see cref="T:System.Reflection.ConstructorInfo"/>
+             occur when a <see cref="T:System.Reflection.Emit.ConstructorBuilder"/> is created.
+             </summary>
+            
+             <exception cref="T:System.NotSupportedException">
+             Any invocation.
+             </exception>
+        </member>
+        <member name="M:Jolt.Testing.CodeGeneration.ConstructorDeclarerImpl.Jolt#Testing#CodeGeneration#IMethodDeclarerImpl{System#Reflection#Emit#ConstructorBuilder@System#Reflection#ConstructorInfo}#DefineMethodParameters(System.Reflection.Emit.ConstructorBuilder,System.Reflection.ConstructorInfo)">
+            <see cref="!:IMethodDeclarerImpl&lt;MethodBuilder, MethodInfo&gt;.DefineMethodParameters(ConstructorBuilder, ConstructorInfo&gt;"/>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.XmlEqualityAssertion">
+            <summary>
+            Provides assertion methods that verify if two XML readers contain XML
+            that is equal in terms of structure and content of elements.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEqualityAssertion.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> class.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEqualityAssertion.#ctor(Jolt.Testing.Assertions.XmlEquivalencyAssertion)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> class,
+            encapsulating an <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>.
+            </summary>
+            
+            <param name="assertion">
+            The equivalency assertion to associate with the instance.
+            </param>
+            
+            <remarks>
+            Used internally by test code to override assertion operations.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.XmlEqualityAssertion.AreEqual(System.Xml.XmlReader,System.Xml.XmlReader)">
+            <summary>
+            Compares two given elements for equality in terms of
+            structure and element contents.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="T:System.Xml.XmlReader"/>.
+            </param>
+            
+            <param name="actual">
+            The XML to validate, referenced by an <see cref="T:System.Xml.XmlReader"/>.
+            </param>
+            
+            <returns>
+            A new instance of the <see cref="T:Jolt.Testing.Assertions.XmlComparisonResult"/> containing the result
+            of the assertion.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.XmlEqualityAssertion.EquivalencyAssertion">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> that is associated with the instance.
+            </summary>
+        </member>
+    </members>
+</doc>

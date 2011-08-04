@@ -1,0 +1,8 @@
+
+*.user
+*.suo
+/DocxConverter/bin
+/DocxConverter/obj
+/Tests/bin
+/Tests/obj
+/_ReSharper.DocxConverter

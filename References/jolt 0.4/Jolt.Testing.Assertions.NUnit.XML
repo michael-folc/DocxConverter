@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jolt.Testing.Assertions.NUnit</name>
+    </assembly>
+    <members>
+        <member name="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint">
+            <summary>
+            Defines an NUnit constraint to verify if two <see cref="T:System.Xml.XmlReader"/>
+            objects contain XML that is equivalent in terms of a given user-definition.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2">
+            <summary>
+            Defines an abstract base class that contains functionaly
+            common to all NUnit XML constraints.
+            </summary>
+            
+            <typeparam name="TActual">
+            The type of the "actual" parameter given to the
+            <see cref="M:NUnit.Framework.Constraints.Constraint.Matches(System.Object)"/> method.
+            </typeparam>
+            
+            <typeparam name="TAssertionResult">
+            The return type of the encapsulated assertion.
+            </typeparam>
+            
+            <remarks>
+            Not intended for external use.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.Matches(System.Object)">
+            <summary>
+            Evaluates the constraint as per the concrete evaluation method, <see cref="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.Assert(`0)"/>.
+            </summary>
+            
+            <param name="actual">
+            The value given to <see cref="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.Assert(`0)"/> for validation.
+            </param>
+            
+            <returns>
+            Returns true if the evalualtion is successful, false otherwise</returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.WriteMessageTo(NUnit.Framework.Constraints.MessageWriter)">
+            <summary>
+            <see cref="M:NUnit.Framework.Constraints.Constraint.WriteMessageTo(NUnit.Framework.Constraints.MessageWriter)"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.WriteDescriptionTo(NUnit.Framework.Constraints.MessageWriter)">
+            <summary>
+            <see cref="M:NUnit.Framework.Constraints.Constraint.WriteMessageTo(NUnit.Framework.Constraints.MessageWriter)"/>
+            </summary>
+            
+            <remarks>
+            Not implemented since the error message rendering is
+            accomplished entirely by <see cref="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.WriteMessageTo(NUnit.Framework.Constraints.MessageWriter)"/>.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.Assert(`0)">
+            <summary>
+            Performs the evaluation/assertion of the constraint.
+            </summary>
+            
+            <param name="actual">
+            The data value to validate.
+            </param>
+            
+            <returns>
+            A new instance of <typeparamref name="TAssertionResult"/>, denoting
+            the success or failure of the assertion.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.ToBoolean(`1)">
+            <summary>
+            Converts a <typeparamref name="TAssertionResult"/> to a Boolean value.
+            </summary>
+            
+            <param name="assertionResult">
+            The <typeparamref name="TAssertionResult"/> to convert.
+            </param>
+            
+            <returns>
+            The Boolean representation of <paramref name="assertionResult"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.AbstractConstraint`2.CreateAssertionErrorMessage(`1)">
+            <summary>
+            Creates an assertion error message for a given <typeparamref name="TAssertionResult"/>.
+            </summary>
+            
+            <param name="assertionResult">
+            The <typeparamref name="TAssertionResult"/> from which the error message is derived.
+            </param>
+            
+            <returns>
+            A string containing an error message pertaining to <paramref name="assertionResult"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.#ctor(System.Xml.XmlReader)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint"/> class,
+            with the strictest level of equivalency (i.e. strict equality).
+            </summary>
+            
+            <param name="expectedXml">
+            An <see cref="T:System.Xml.XmlReader"/> object containing the expected XML.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.#ctor(System.Xml.XmlReader,System.Func{Jolt.Testing.Assertions.XmlComparisonFlags,Jolt.Testing.Assertions.XmlEquivalencyAssertion})">
+             <summary>
+             Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint"/> class,
+             with the strictest level of equivalency (i.e. strict equality), and
+             encapsulating an <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>.
+             </summary>
+             
+             <param name="expectedXml">
+             An <see cref="T:System.Xml.XmlReader"/> object containing the expected XML.
+             </param>
+            
+             <param name="createAssertion">
+             A factory method for creating the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/> that performs the assertion.
+             </param>
+             
+             <remarks>
+             Used internally by test code to override assertion operations.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.Assert(System.Xml.XmlReader)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.Assert"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.ToBoolean(Jolt.Testing.Assertions.XmlComparisonResult)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.ToBoolean"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.CreateAssertionErrorMessage(Jolt.Testing.Assertions.XmlComparisonResult)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.CreateAssertionErrorMessage"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.ApplyComparisonFlag(Jolt.Testing.Assertions.XmlComparisonFlags)">
+            <summary>
+            Accumulates a <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> value to the value stored by the instance.
+            </summary>
+            
+            <param name="flag">
+            The <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> to accumulate.
+            </param>
+            
+            <returns>
+            A reference to the modified <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint"/> instance.
+            </returns>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.IgnoreAttributeNamespaces">
+            <summary>
+            Directs the constraint to ignore attribute namespaces during evaluation.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.IgnoreAttributes">
+            <summary>
+            Directs the constraint to ignore attributes during evaluation.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.IgnoreElementNamespaces">
+            <summary>
+            Directs the constraint to ignore element namespaces during evaluation.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.IgnoreElementValues">
+            <summary>
+            Directs the constraint to ignore element values during evaluation.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.IgnoreSequenceOrder">
+            <summary>
+            Directs the constraint to ignore element sequence ordering during evaluation.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.CreateAssertion">
+            <summary>
+            Gets the factory method that creates the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>
+            that is used by the instance.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.ComparisonFlags">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.Assertions.XmlComparisonFlags"/> value that is used to initialize an
+            the <see cref="T:Jolt.Testing.Assertions.XmlEquivalencyAssertion"/>.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint.ExpectedXml">
+            <summary>
+            Gets the <see cref="T:System.Xml.XmlReader"/> associated with the instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint">
+            <summary>
+            Defines an NUnit constraint for validating XML against a given
+            set of XML schemas.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.#ctor(System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/>,
+            treating all validation warnings as errors.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the desired valid XML structure.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.#ctor(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/> class,
+            and configures the validator with a given set of rules.
+            </summary>
+            
+            <param name="schemas">
+            The schemas defining the valid XML structure.
+            </param>
+            
+            <param name="validationFlags">
+            An <see cref="T:System.Xml.Schema.XmlSchemaValidationFlags"/> enumeration that configures the XML validator.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.#ctor(Jolt.Testing.Assertions.XmlValidityAssertion)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/> class,
+            encapsulating an <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/>.
+            </summary>
+            
+            <param name="assertion">
+            The <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> that performs the validation.
+            </param>
+            
+            <remarks>
+            Used internally by test code to override assertion operations.
+            </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.Assert(System.Xml.XmlReader)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.Assert"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.ToBoolean(System.Collections.Generic.IList{System.Xml.Schema.ValidationEventArgs})">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.ToBoolean"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.CreateAssertionErrorMessage(System.Collections.Generic.IList{System.Xml.Schema.ValidationEventArgs})">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.CreateAssertionErrorMessage"/>
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint.Assertion">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.Assertions.XmlValidityAssertion"/> that is associated with the instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint">
+            <summary>
+            Defines an NUnit constraint to verify if two <see cref="T:System.Xml.XmlReader"/>
+            objects contain XML that is equal in terms of structure and content of elements.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.#ctor(System.Xml.XmlReader)">
+            <summary>
+            Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint"/> class.
+            </summary>
+            
+            <param name="expectedXml">
+            An <see cref="T:System.Xml.XmlReader"/> object containing the expected XML.
+            </param>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.#ctor(System.Xml.XmlReader,Jolt.Testing.Assertions.XmlEqualityAssertion)">
+             <summary>
+             Creates a new instance of the <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint"/> class,
+             encapsulating an <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/>.
+             </summary>
+             
+             <param name="expectedXml">
+             An <see cref="T:System.Xml.XmlReader"/> object containing the expected XML.
+             </param>
+            
+             <param name="assertion">
+             The <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> that performs the assertion.
+             </param>
+             
+             <remarks>
+             Used internally by test code to override assertion operations.
+             </remarks>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.Assert(System.Xml.XmlReader)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.Assert"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.ToBoolean(Jolt.Testing.Assertions.XmlComparisonResult)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.ToBoolean"/>
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.CreateAssertionErrorMessage(Jolt.Testing.Assertions.XmlComparisonResult)">
+            <summary>
+            <see cref="!:AbstractXmlConstraint.CreateAssertionErrorMessage"/>
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.Assertion">
+            <summary>
+            Gets the <see cref="T:Jolt.Testing.Assertions.XmlEqualityAssertion"/> associated with the instance.
+            </summary>
+        </member>
+        <member name="P:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint.ExpectedXml">
+            <summary>
+            Gets the <see cref="T:System.Xml.XmlReader"/> associated with the instance.
+            </summary>
+        </member>
+        <member name="T:Jolt.Testing.Assertions.NUnit.SyntaxHelpers.IsXml">
+            <summary>
+            Defines an NUnit syntax helper class that creates Jolt XML constraints.
+            </summary>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.SyntaxHelpers.IsXml.ValidWith(System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Creates a new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/> for the given schemas.
+            </summary>
+            
+            <param name="schemas">
+            The schemas to validate with.
+            </param>
+            
+            <returns>
+            A new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.SyntaxHelpers.IsXml.ValidWith(System.Xml.Schema.XmlSchemaSet,System.Xml.Schema.XmlSchemaValidationFlags)">
+            <summary>
+            Creates a new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/> for the given schemas
+            and <see cref="T:System.Xml.Schema.XmlSchemaValidationFlags"/> value.
+            </summary>
+            
+            <param name="schemas">
+            The schemas to validate with.
+            </param>
+            
+            <param name="validationFlags">
+            The <see cref="T:System.Xml.Schema.XmlSchemaValidationFlags"/> values that customize the type of validation.
+            </param>
+            
+            <returns>
+            A new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlValidityConstraint"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.SyntaxHelpers.IsXml.EqualTo(System.Xml.XmlReader)">
+            <summary>
+            Creates a new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint"/> for the given
+            <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="T:System.Xml.XmlReader"/>,
+            that is applied to the constraint.
+            </param>
+            
+            <returns>
+            A new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEqualityConstraint"/>.
+            </returns>
+        </member>
+        <member name="M:Jolt.Testing.Assertions.NUnit.SyntaxHelpers.IsXml.EquivalentTo(System.Xml.XmlReader)">
+            <summary>
+            Creates a new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint"/> for the given
+            <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            
+            <param name="expected">
+            The expected XML, referenced by an <see cref="T:System.Xml.XmlReader"/>,
+            that is applied to the constraint.
+            </param>
+            
+            <returns>
+            A new instance of an <see cref="T:Jolt.Testing.Assertions.NUnit.XmlEquivalencyConstraint"/>.
+            </returns>
+        </member>
+    </members>
+</doc>
