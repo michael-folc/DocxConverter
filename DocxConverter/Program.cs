@@ -13,6 +13,39 @@ namespace DocxConverter
       Application.EnableVisualStyles ();
       Application.SetCompatibleTextRenderingDefault (false);
       Application.Run (new Form1 ());
+
+      /*
+       * - DocX
+       *  -- extract main document
+       *  -- merge changes
+       *  -- transform to plain xml
+       * 
+       * - ODT
+       *  -- extract main document
+       *  -- merge changes (?)
+       *  -- transform to plain xml
+
+       * - Generate UBB from plain xml
+       *  -- merge adjacent nodes 
+       *  -- normalize section breaks
+       *  -- generate UBB
+
+       * - Generate TXT from plain xml
+       *  -- merge adjacent nodes 
+       *  -- normalize section breaks
+       *  -- replace special characters
+       *   --- slanted quotes, dashes, elipses
+       *  -- generate Plain Text
+       *   --- Replace italic and bold with special characters
+       *   --- Line wrap: http://xsltcookbook2.atw.hu/xsltckbk2-chp-7-sect-6.html
+      
+       * - Generate HTML from plain xml
+       *  -- merge adjacent nodes 
+       *  -- normalize section breaks
+       *  -- generate HTML
+       *  
+       */
+
     }
   }
 }
