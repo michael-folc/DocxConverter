@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?altova_samplexml C:\Development\Temp\_Docx2Other\document.xml?>
 <xsl:stylesheet version="2.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+    xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    exclude-result-prefixes="w">
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:strip-space elements="*"/>
   
