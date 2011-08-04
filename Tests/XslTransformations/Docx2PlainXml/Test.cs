@@ -26,6 +26,18 @@ namespace Tests.XslTransformations.Docx2PlainXml
     }
 
     [Test]
+    public void Bold ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
+    public void ItalicAndBold ()
+    {
+      RunAssertion (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
     public void Whitespace ()
     {
       RunAssertion (MethodBase.GetCurrentMethod());

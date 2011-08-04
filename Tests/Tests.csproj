@@ -53,6 +53,20 @@
     <Compile Include="XslTransformations\Docx2PlainXml\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="XslTransformations\Docx2PlainXml\BoldResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\BoldSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ItalicAndBoldResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\Docx2PlainXml\ItalicAndBoldSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="XslTransformations\Docx2PlainXml\EmptyTagsResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
