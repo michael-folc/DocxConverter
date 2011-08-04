@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XslTransformations\Docx2PlainXml\Test.cs" />
+    <Compile Include="XslTransformations\PlainXmlFormatMerge\Test.cs" />
     <Compile Include="XslTransformations\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,14 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XslTransformations\Docx2PlainXml\IntegrationSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\PlainXmlFormatMerge\ItalicResult.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\PlainXmlFormatMerge\ItalicSource.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
