@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <p>Text <b xml:space="preserve">bold text</b> Text</p>
+  <p>
+    <t xml:space="preserve">Text </t>
+    <b>
+      <t xml:space="preserve">bold text</t>
+    </b>
+    <t xml:space="preserve"> Text</t>
+  </p>
 </document>

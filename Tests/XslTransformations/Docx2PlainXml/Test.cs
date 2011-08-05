@@ -66,6 +66,7 @@ namespace Tests.XslTransformations.Docx2PlainXml
     {
       RunAssertion (MethodBase.GetCurrentMethod ());
     }
+
     [Test]
     public void Integration ()
     {

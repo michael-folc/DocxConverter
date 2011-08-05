@@ -43,7 +43,9 @@
   <xsl:template match="w:r" priority="3">
     <xsl:choose>
       <xsl:when test="./w:rPr/w:i">
-        <i xml:space="preserve"><xsl:next-match/></i>
+        <i>
+          <xsl:next-match/>
+        </i>
       </xsl:when>
       <xsl:otherwise>
         <xsl:next-match/>
@@ -55,7 +57,9 @@
   <xsl:template match="w:r" priority="2">
     <xsl:choose>
       <xsl:when test="./w:rPr/w:b">
-        <b xml:space="preserve"><xsl:next-match/></b>
+        <b>
+          <xsl:next-match/>
+        </b>
       </xsl:when>
       <xsl:otherwise>
          <xsl:next-match/>
@@ -70,6 +74,6 @@
    
   <!-- render text -->
   <xsl:template match="w:t">
-    <xsl:value-of select="./text()"/>
+    <t xml:space="preserve"><xsl:value-of select="./text()"/></t>
   </xsl:template>  
 </xsl:stylesheet>

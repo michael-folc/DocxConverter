@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <p>Text <i xml:space="preserve">italic </i><i xml:space="preserve"><b xml:space="preserve">italic bold </b></i><i xml:space="preserve">italic </i>Text</p>
-  <p>Text <b xml:space="preserve">bold </b><i xml:space="preserve"><b xml:space="preserve">italic bold </b></i><b xml:space="preserve">bold </b>Text</p>
+  <p>
+    <t xml:space="preserve">Text </t>
+    <i>
+      <t xml:space="preserve">italic </t>
+    </i>
+    <i>
+      <b>
+        <t xml:space="preserve">italic bold </t>
+      </b>
+    </i>
+    <i>
+      <t xml:space="preserve">italic </t>
+    </i>
+    <t xml:space="preserve">Text</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Text </t>
+    <b>
+      <t xml:space="preserve">bold </t>
+    </b>
+    <i>
+      <b>
+        <t xml:space="preserve">italic bold </t>
+      </b>
+    </i>
+    <b>
+      <t xml:space="preserve">bold </t>
+    </b>
+    <t xml:space="preserve">Text</t>
+  </p>
 </document>

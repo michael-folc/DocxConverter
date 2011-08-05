@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <p>Para 1</p>
-  <p>Para 2</p>
+  <p>
+    <t xml:space="preserve">Para 1</t>
+  </p>
 </document>

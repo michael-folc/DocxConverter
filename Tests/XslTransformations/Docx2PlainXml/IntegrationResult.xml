@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <p>Para 1</p>
-  <p>Para 2 <i xml:space="preserve">italic </i><i xml:space="preserve">still italic</i> something</p>
-  <h1>Heading 1</h1>
-  <p>Para</p>
-  <h2>Heading 2</h2>
-  <p>Para</p>
-  <h3>Heading 3</h3>
-  <p>Para</p>
-  <p>***</p>
-  <p>Para</p>
-  <p>Para 3 <i xml:space="preserve">italic</i> normal <b xml:space="preserve">bold</b> normal <i xml:space="preserve">italic </i><i xml:space="preserve"><b xml:space="preserve">bold italic</b></i><i xml:space="preserve"> </i><i xml:space="preserve">italic</i></p>
-  <p />
+  <p>
+    <t xml:space="preserve">Para 1</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Para 2 </t>
+    <i>
+      <t xml:space="preserve">italic </t>
+    </i>
+    <i>
+      <t xml:space="preserve">still italic</t>
+    </i>
+    <t xml:space="preserve"> </t>
+    <t xml:space="preserve">something</t>
+  </p>
+  <h1>
+    <t xml:space="preserve">Heading 1</t>
+  </h1>
+  <p>
+    <t xml:space="preserve">Para</t>
+  </p>
+  <h2>
+    <t xml:space="preserve">Heading 2</t>
+  </h2>
+  <p>
+    <t xml:space="preserve">Para</t>
+  </p>
+  <h3>
+    <t xml:space="preserve">Heading 3</t>
+  </h3>
+  <p>
+    <t xml:space="preserve">Para</t>
+  </p>
+  <p>
+    <t xml:space="preserve">***</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Para</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Para 3 </t>
+    <i>
+      <t xml:space="preserve">italic</t>
+    </i>
+    <t xml:space="preserve"> normal </t>
+    <b>
+      <t xml:space="preserve">bold</t>
+    </b>
+    <t xml:space="preserve"> normal </t>
+    <i>
+      <t xml:space="preserve">italic </t>
+    </i>
+    <i>
+      <b>
+        <t xml:space="preserve">bold italic</t>
+      </b>
+    </i>
+    <i>
+      <t xml:space="preserve"> </t>
+    </i>
+    <i>
+      <t xml:space="preserve">italic</t>
+    </i>
+  </p>
+  <p/>
 </document>

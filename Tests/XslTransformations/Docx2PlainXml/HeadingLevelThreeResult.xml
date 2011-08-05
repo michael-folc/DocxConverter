@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <h3>Heading 3</h3>
+  <h3>
+    <t xml:space="preserve">Heading 3</t>
+  </h3>
 </document>
