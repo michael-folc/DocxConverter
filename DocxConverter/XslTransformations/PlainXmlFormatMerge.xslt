@@ -7,7 +7,11 @@
       <xsl:apply-templates select="." mode="i-nodes"/>
     </xsl:variable>
     
-    <xsl:apply-templates select="$i-nodes-merged" mode="b-nodes"/>
+    <xsl:variable name="b-nodes-merged">
+      <xsl:apply-templates select="$i-nodes-merged" mode="b-nodes"/>
+    </xsl:variable>
+    
+    <xsl:apply-templates select="$b-nodes-merged" mode="t-nodes"/>
   </xsl:template>
  
   <!-- i-nodes merge -->
@@ -60,4 +64,27 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- t-nodes merge -->
+
+  <xsl:template match="node()|@*" mode="t-nodes">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*" mode="t-nodes"/>
+    </xsl:copy>
+  </xsl:template>
+  
+ <xsl:template match="node()" mode="t-nodes">
+    <xsl:copy>
+      <xsl:for-each-group select="node()|@*" group-adjacent="boolean(self::t)">
+        <xsl:choose>
+          <xsl:when test="current-grouping-key()">
+            <t xml:space="preserve"><xsl:apply-templates select="current-group()/node()" mode="t-nodes"/></t>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="current-group()" mode="t-nodes" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each-group>
+    </xsl:copy>
+  </xsl:template>
+  
 </xsl:stylesheet>

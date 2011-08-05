@@ -30,8 +30,7 @@
     <t xml:space="preserve">Text31 </t>
     <i>
       <b>
-        <t xml:space="preserve">italic32 bold33 </t>
-        <t xml:space="preserve">more34 italic35 bold36 </t>
+        <t xml:space="preserve">italic32 bold33 more34 italic35 bold36 </t>
       </b>
     </i>
     <t xml:space="preserve">Text37</t>

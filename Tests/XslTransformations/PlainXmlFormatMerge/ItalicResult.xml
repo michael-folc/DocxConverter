@@ -3,8 +3,7 @@
   <p>
     <t xml:space="preserve">Text1 </t>
     <i>
-      <t xml:space="preserve">italic1 </t>
-      <t xml:space="preserve">Text2 </t>
+      <t xml:space="preserve">italic1 Text2 </t>
     </i>
     <t xml:space="preserve">Text3 </t>
     <i>
