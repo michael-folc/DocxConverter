@@ -90,14 +90,5 @@ namespace DocxConverter.XslTransformations
         _transformer.InitialContextNode = null;
       }
     }
-
-    private string GetText (Serializer destination)
-    {
-      using (var result = new StringWriter())
-      {
-        destination.SetOutputWriter (result);
-        return result.ToString();
-      }
-    }
   }
 }
