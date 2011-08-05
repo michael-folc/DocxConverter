@@ -15,61 +15,61 @@ namespace Tests.XslTransformations.Docx2PlainXmlTests
     [Test]
     public void Paragraph ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod());
+      AssertTransformXml (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void Italic ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod());
+      AssertTransformXml (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void Bold ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void ItalicAndBold ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void Whitespace ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod());
+      AssertTransformXml (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void EmptyTags ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod());
+      AssertTransformXml (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void HeadingLevelOne ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void HeadingLevelTwo ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void HeadingLevelThree ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void Integration ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod());
+      AssertTransformXml (MethodBase.GetCurrentMethod());
     }
   }
 }

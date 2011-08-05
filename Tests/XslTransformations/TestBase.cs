@@ -22,7 +22,7 @@ namespace Tests.XslTransformations
       _transformation = CreateXslTransformation();
     }
 
-    protected void RunAssertion (MethodBase currentMethod)
+    protected void AssertTransformXml (MethodBase currentMethod)
     {
       var source = GetSourceXml (currentMethod);
       var expected = GetResultXml (currentMethod);

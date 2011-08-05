@@ -15,25 +15,25 @@ namespace Tests.XslTransformations.PlainXmlFormatMergeTests
     [Test]
     public void Text ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void Italic ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void Bold ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
     public void ItalicAndBold ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
   }
 }

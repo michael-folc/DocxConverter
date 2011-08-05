@@ -18,7 +18,7 @@ namespace Tests.XslTransformations.XslTransformationTests
     [Test]
     public void Xml ()
     {
-      RunAssertion (MethodBase.GetCurrentMethod ());
+      AssertTransformXml (MethodBase.GetCurrentMethod ());
     }
   }
 }
