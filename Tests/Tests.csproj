@@ -52,7 +52,8 @@
     <Compile Include="XslTransformations\Docx2PlainXmlTests\Test.cs" />
     <Compile Include="XslTransformations\PlainXmlFormatMergeTests\Test.cs" />
     <Compile Include="XslTransformations\TestBase.cs" />
-    <Compile Include="XslTransformations\XslTransformationTests\Test.cs" />
+    <Compile Include="XslTransformations\XslTransformationTests\TransformText.cs" />
+    <Compile Include="XslTransformations\XslTransformationTests\TransformXml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XslTransformations\Docx2PlainXmlTests\BoldResult.xml">
@@ -155,6 +156,17 @@
     </Content>
     <Content Include="XslTransformations\PlainXmlFormatMergeTests\ItalicSource.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\XslTransformationTests\TextResult.txt">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\XslTransformationTests\TextSource.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\XslTransformationTests\TextTransformation.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\XslTransformationTests\XmlTransformation.xslt">

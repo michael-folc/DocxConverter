@@ -26,7 +26,7 @@ namespace Tests.XslTransformations
     {
       var source = GetSourceXml (currentMethod);
       var expected = GetResultXml (currentMethod);
-      var actual = _transformation.Transform (source);
+      var actual = _transformation.TransformXml (source);
       using (var actualReader = actual.CreateReader())
       {
         using (var expectedReader = expected.CreateReader())
@@ -34,6 +34,15 @@ namespace Tests.XslTransformations
           Assert.That (actualReader, IsXml.EquivalentTo (expectedReader));
         }
       }
+    }
+
+    protected void AssertTransformText (MethodBase currentMethod)
+    {
+      var source = GetSourceXml (currentMethod);
+      var expected = GetResultText (currentMethod);
+      var actual = _transformation.TransformText (source);
+
+      Assert.That (actual, Is.EqualTo (expected));
     }
 
     protected XslTransformation CreateXslTransformation (string fileName)
@@ -50,6 +59,11 @@ namespace Tests.XslTransformations
     private XDocument GetResultXml (MethodBase methodBase)
     {
       return XDocument.Load (GetFileName (methodBase, "Result", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
+    }
+
+    private string GetResultText (MethodBase methodBase)
+    {
+      return File.ReadAllText (GetFileName (methodBase, "Result", "txt"));
     }
 
     private string GetFileName (MethodBase methodBase, string suffix, string extension)

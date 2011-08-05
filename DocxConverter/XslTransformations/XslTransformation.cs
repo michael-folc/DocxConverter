@@ -1,6 +1,5 @@
 using System;
-using System.Diagnostics.Contracts;
-using System.Xml;
+using System.IO;
 using System.Xml.Linq;
 using DocxConverter.Utilities;
 using Saxon.Api;
@@ -17,49 +16,88 @@ namespace DocxConverter.XslTransformations
       return new XslTransformation (xDocument);
     }
 
-    private readonly XDocument _xslt;
-    private static readonly Processor s_processor = new Processor ();
+    private static readonly Processor s_processor = new Processor();
+    private readonly XsltTransformer _transformer;
 
     public XslTransformation (XDocument xslt)
     {
       ArgumentUtility.CheckNotNull ("xslt", xslt);
 
-      _xslt = xslt;
+      var xsltCompiler = s_processor.NewXsltCompiler();
+      var compiledXslt = xsltCompiler.Compile (xslt.CreateReader());
+
+      _transformer = compiledXslt.Load();
     }
 
-    public XDocument Transform (XDocument source)
+    public XDocument TransformXml (XDocument source)
     {
       ArgumentUtility.CheckNotNull ("source", source);
 
-      // Load the source document.
-      XdmNode input = s_processor.NewDocumentBuilder ().Build (source.CreateReader());
-
-      // Create a transformer for the stylesheet.
-      XsltTransformer transformer = s_processor.NewXsltCompiler().Compile (_xslt.CreateReader()).Load();
-
-      // Set the root node of the source document to be the initial context node.
-      transformer.InitialContextNode = input;
-
-      // BaseOutputUri is only necessary for xsl:result-document.
-      //transformer.BaseOutputUri = new Uri (xsltUri);
-
-      // transformer.SetParameter(new QName("", "", "a-param"), new XdmAtomicValue("hello to you!"));
-      // transformer.SetParameter(new QName("", "", "b-param"), new XdmAtomicValue(someVariable));
-
-      // Create a serializer.
-      //Serializer serializer = new Serializer ();
-      //serializer.SetOutputWriter (Response.Output); //for screen
-      // serializer.SetOutputFile(Server.MapPath("test.html")); //for file
-
-      // Transform the source XML to System.out.
       var destination = new XdmDestination();
-      transformer.Run (destination);
-      var result = new XDocument();
-      using (var resultWriter = result.CreateWriter ())
+      try
       {
-        destination.XdmNode.WriteTo (resultWriter);
+        Transform (source, destination);
+        var result = new XDocument();
+        using (var resultWriter = result.CreateWriter())
+        {
+          destination.XdmNode.WriteTo (resultWriter);
+        }
+        return result;
       }
-      return result;
+      finally
+      {
+        destination.Close();
+      }
+    }
+
+    public string TransformText (XDocument source)
+    {
+      ArgumentUtility.CheckNotNull ("source", source);
+
+      var destination = new Serializer();
+      try
+      {
+        using (var result = new StringWriter())
+        {
+          destination.SetOutputWriter (result);
+          Transform (source, destination);
+          return result.ToString();
+        }
+      }
+      finally
+      {
+        destination.Close();
+      }
+    }
+
+    private void Transform (XDocument source, XmlDestination destination)
+    {
+      try
+      {
+        var documentBuilder = s_processor.NewDocumentBuilder();
+        using (var sourceReader = source.CreateReader())
+        {
+          _transformer.InitialContextNode = documentBuilder.Build (sourceReader);
+        }
+
+        // transformer.SetParameter(new QName("", "", "a-param"), new XdmAtomicValue("hello to you!"));
+        // transformer.SetParameter(new QName("", "", "b-param"), new XdmAtomicValue(someVariable));
+
+        _transformer.Run (destination);
+      }
+      finally
+      {
+        _transformer.InitialContextNode = null;
+      }
+    }
+
+    private string GetText (Serializer destination)
+    {
+      using (var result = new StringWriter())
+      {
+        destination.SetOutputWriter (result);
+        return result.ToString();
+      }
     }
   }
 }
