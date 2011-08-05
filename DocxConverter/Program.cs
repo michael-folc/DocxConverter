@@ -19,6 +19,7 @@ namespace DocxConverter
        *  -- extract main document
        *  -- merge changes
        *  -- transform to plain xml
+       *        Suppert new lines <---- !!!
        * 
        * - ODT
        *  -- extract main document
