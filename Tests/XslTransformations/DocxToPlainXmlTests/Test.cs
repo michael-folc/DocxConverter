@@ -2,14 +2,14 @@ using System.Reflection;
 using DocxConverter.XslTransformations;
 using NUnit.Framework;
 
-namespace Tests.XslTransformations.Docx2PlainXmlTests
+namespace Tests.XslTransformations.DocxToPlainXmlTests
 {
   [TestFixture]
   public class Test : TestBase
   {
     protected override XslTransformation CreateXslTransformation ()
     {
-      return CreateXslTransformation ("Docx2PlainXml.xslt");
+      return CreateXslTransformation ("DocxToPlainXml.xslt");
     }
 
     [Test]
