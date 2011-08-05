@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <p>Text11 <i xml:space="preserve">italic12 <b xml:space="preserve">italic13 bold14 </b>italic15 </i>Text16</p>
+  <p>Text21 <b xml:space="preserve">bold22 </b><i xml:space="preserve"><b xml:space="preserve">italic23 bold24 </b></i><b xml:space="preserve">bold25 </b>Text26</p>
+  <p>Text23 <i xml:space="preserve"><b xml:space="preserve">italic32 bold33 more34 italic35 bold36 </b></i>Text37</p>
+</document>

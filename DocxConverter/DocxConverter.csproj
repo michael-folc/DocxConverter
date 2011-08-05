@@ -89,6 +89,7 @@
   <ItemGroup>
     <Content Include="XslTransformations\PlainXmlFormatMerge.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="XslTransformations\Docx2PlainXml.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
