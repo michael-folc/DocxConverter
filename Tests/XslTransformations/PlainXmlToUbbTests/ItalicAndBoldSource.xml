@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <p>
+    <t xml:space="preserve">Text11 </t>
+    <i>
+      <t xml:space="preserve">italic12 </t>
+      <b>
+        <t xml:space="preserve">italic13 bold14 </t>
+      </b>
+      <t xml:space="preserve">italic15 </t>
+    </i>
+    <t xml:space="preserve">Text16</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Text21 </t>
+    <b>
+      <t xml:space="preserve">bold22 </t>
+    </b>
+    <i>
+      <b>
+        <t xml:space="preserve">italic23 bold24 </t>
+      </b>
+    </i>
+    <b>
+      <t xml:space="preserve">bold25 </t>
+    </b>
+    <t xml:space="preserve">Text26</t>
+  </p>
+  <p>
+    <t xml:space="preserve">Text31 </t>
+    <i>
+      <b>
+        <t xml:space="preserve">italic32 bold33 more34 italic35 bold36 </t>
+      </b>
+    </i>
+    <t xml:space="preserve">Text37</t>
+  </p>
+</document>

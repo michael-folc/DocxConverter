@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using DocxConverter.XslTransformations;
 using NUnit.Framework;
@@ -17,54 +18,41 @@ namespace Tests.XslTransformations.PlainXmlToUbbTests
     {
       AssertTransformText (MethodBase.GetCurrentMethod());
     }
-    /*
+
+    [Test]
+    public void Text ()
+    {
+      AssertTransformText (MethodBase.GetCurrentMethod());
+    }
+
     [Test]
     public void Italic ()
     {
-      AssertTransformXml (MethodBase.GetCurrentMethod());
+      AssertTransformText (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void Bold ()
     {
-      AssertTransformXml (MethodBase.GetCurrentMethod ());
+      AssertTransformText (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void ItalicAndBold ()
     {
-      AssertTransformXml (MethodBase.GetCurrentMethod ());
+      AssertTransformText (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void Whitespace ()
     {
-      AssertTransformXml (MethodBase.GetCurrentMethod());
+      AssertTransformText (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void EmptyTags ()
     {
-      AssertTransformXml (MethodBase.GetCurrentMethod());
+      AssertTransformText (MethodBase.GetCurrentMethod());
     }
-
-    [Test]
-    public void HeadingLevelOne ()
-    {
-      AssertTransformXml (MethodBase.GetCurrentMethod ());
-    }
-
-    [Test]
-    public void HeadingLevelTwo ()
-    {
-      AssertTransformXml (MethodBase.GetCurrentMethod ());
-    }
-
-    [Test]
-    public void HeadingLevelThree ()
-    {
-      AssertTransformXml (MethodBase.GetCurrentMethod ());
-    }
-    */
   }
 }

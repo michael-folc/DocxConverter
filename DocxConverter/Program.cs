@@ -29,12 +29,14 @@ namespace DocxConverter
        * - Generate UBB from plain xml
        *  -- merge adjacent nodes (/)
        *  -- optimize whitespace
+       *  -- replace headings with paragraphs
        *  -- normalize section breaks
        *  -- generate UBB
 
        * - Generate TXT from plain xml
        *  -- merge adjacent nodes (/)
        *  -- optimize whitespace
+       *  -- replace headings with paragraphs
        *  -- normalize section breaks
        *  -- replace special characters
        *   --- slanted quotes, dashes, elipses

@@ -16,6 +16,18 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="i">
+    <xsl:text>[i]</xsl:text>
+    <xsl:apply-templates select="./*" />
+    <xsl:text>[/i]</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="b">
+    <xsl:text>[b]</xsl:text>
+    <xsl:apply-templates select="./*" />
+    <xsl:text>[/b]</xsl:text>
+  </xsl:template>
+
   <xsl:template match="t">
     <xsl:value-of select="./text()"/>
   </xsl:template>

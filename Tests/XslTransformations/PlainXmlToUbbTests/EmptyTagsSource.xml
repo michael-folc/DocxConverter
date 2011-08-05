@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <p>
+    <t xml:space="preserve">Text </t>
+    <i>
+      <t xml:space="preserve" />
+    </i>
+    <t xml:space="preserve"> Text</t>
+  </p>
+  <p>
+    <t xml:space="preserve"/>
+  </p>
+  <p>
+    <t xml:space="preserve">Text</t>
+  </p>
+  <p/>
+</document>
