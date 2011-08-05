@@ -44,12 +44,12 @@ namespace Tests.XslTransformations
 
     private XDocument GetSourceXml (MethodBase methodBase)
     {
-      return XDocument.Load ((string) GetFileName (methodBase, "Source", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
+      return XDocument.Load (GetFileName (methodBase, "Source", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
     }
 
     private XDocument GetResultXml (MethodBase methodBase)
     {
-      return XDocument.Load ((string) GetFileName (methodBase, "Result", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
+      return XDocument.Load (GetFileName (methodBase, "Result", "xml"), LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);
     }
 
     private string GetFileName (MethodBase methodBase, string suffix, string extension)

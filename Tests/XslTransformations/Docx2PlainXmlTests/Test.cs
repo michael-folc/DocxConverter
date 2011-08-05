@@ -1,9 +1,8 @@
-using System;
 using System.Reflection;
 using DocxConverter.XslTransformations;
 using NUnit.Framework;
 
-namespace Tests.XslTransformations.Docx2PlainXml
+namespace Tests.XslTransformations.Docx2PlainXmlTests
 {
   [TestFixture]
   public class Test : TestBase

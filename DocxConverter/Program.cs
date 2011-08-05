@@ -16,7 +16,7 @@ namespace DocxConverter
 
       /*
        * - DocX
-       *  -- extract main document
+       *  -- extract main document (/)
        *  -- merge changes
        *  -- transform to plain xml
        *        Suppert new lines <---- !!!
@@ -27,12 +27,14 @@ namespace DocxConverter
        *  -- transform to plain xml
 
        * - Generate UBB from plain xml
-       *  -- merge adjacent nodes 
+       *  -- merge adjacent nodes (/)
+       *  -- optimize whitespace
        *  -- normalize section breaks
        *  -- generate UBB
 
        * - Generate TXT from plain xml
-       *  -- merge adjacent nodes 
+       *  -- merge adjacent nodes (/)
+       *  -- optimize whitespace
        *  -- normalize section breaks
        *  -- replace special characters
        *   --- slanted quotes, dashes, elipses

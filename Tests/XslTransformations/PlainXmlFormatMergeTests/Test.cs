@@ -1,9 +1,8 @@
-using System;
 using System.Reflection;
 using DocxConverter.XslTransformations;
 using NUnit.Framework;
 
-namespace Tests.XslTransformations.PlainXmlFormatMerge
+namespace Tests.XslTransformations.PlainXmlFormatMergeTests
 {
   [TestFixture]
   public class Test : TestBase
