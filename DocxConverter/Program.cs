@@ -31,7 +31,7 @@ namespace DocxConverter
        *  -- optimize whitespace
        *  -- replace headings with paragraphs
        *  -- normalize section breaks
-       *  -- generate UBB
+       *  -- generate UBB (/)
 
        * - Generate TXT from plain xml
        *  -- merge adjacent nodes (/)
