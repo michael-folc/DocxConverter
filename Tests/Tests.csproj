@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XslTransformations\Docx2PlainXmlTests\Test.cs" />
+    <Compile Include="XslTransformations\DocxToPlainXmlTests\Test.cs" />
     <Compile Include="XslTransformations\PlainXmlFormatMergeTests\Test.cs" />
     <Compile Include="XslTransformations\PlainXmlToUbbTests\Test.cs" />
     <Compile Include="XslTransformations\TestBase.cs" />
@@ -57,74 +57,74 @@
     <Compile Include="XslTransformations\XslTransformationTests\TransformXml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\BoldResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\BoldResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\BoldSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\BoldSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelThreeResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelThreeResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelThreeSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelThreeSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelTwoResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelTwoResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelTwoSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelTwoSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelOneResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelOneResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\HeadingLevelOneSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\HeadingLevelOneSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ItalicAndBoldResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ItalicAndBoldResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ItalicAndBoldSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ItalicAndBoldSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\EmptyTagsResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\EmptyTagsResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\EmptyTagsSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\EmptyTagsSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\WhitespaceResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\WhitespaceResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\WhitespaceSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\WhitespaceSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ItalicResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ItalicResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ItalicSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ItalicSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ParagraphResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ParagraphResult.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\ParagraphSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\ParagraphSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\IntegrationResult.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\IntegrationResult.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXmlTests\IntegrationSource.xml">
+    <Content Include="XslTransformations\DocxToPlainXmlTests\IntegrationSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\PlainXmlFormatMergeTests\BoldResult.xml">
@@ -164,6 +164,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\PlainXmlToUbbTests\ParagraphSource.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\XslTransformationTests\TextNewlineResult.txt">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\XslTransformationTests\TextNewlineSource.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\XslTransformationTests\TextResult.txt">

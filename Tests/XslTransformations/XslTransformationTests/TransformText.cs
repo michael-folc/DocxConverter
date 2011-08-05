@@ -20,5 +20,11 @@ namespace Tests.XslTransformations.XslTransformationTests
     {
       AssertTransformText (MethodBase.GetCurrentMethod ());
     }
+
+    [Test]
+    public void TextNewline ()
+    {
+      AssertTransformText (MethodBase.GetCurrentMethod ());
+    }
   }
 }

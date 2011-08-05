@@ -91,7 +91,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="XslTransformations\Docx2PlainXml.xslt">
+    <Content Include="XslTransformations\DocxToPlainXml.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\PlainXmlToUbb.xslt">
