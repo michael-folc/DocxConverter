@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-  <p>Text1 <i xml:space="preserve">italic1 Text2 </i>Text3 <i xml:space="preserve">italic4 Text4 </i>Text5</p>
+  <p>
+    <t xml:space="preserve">Text1 </t>
+    <i>
+      <t xml:space="preserve">italic1 </t>
+      <t xml:space="preserve">Text2 </t>
+    </i>
+    <t xml:space="preserve">Text3 </t>
+    <i>
+      <t xml:space="preserve">italic4 Text4 </t>
+    </i>
+    <t xml:space="preserve">Text5</t>
+  </p>
 </document>
