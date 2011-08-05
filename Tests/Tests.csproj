@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XslTransformations\Docx2PlainXmlTests\Test.cs" />
     <Compile Include="XslTransformations\PlainXmlFormatMergeTests\Test.cs" />
+    <Compile Include="XslTransformations\PlainXmlToUbbTests\Test.cs" />
     <Compile Include="XslTransformations\TestBase.cs" />
     <Compile Include="XslTransformations\XslTransformationTests\TransformText.cs" />
     <Compile Include="XslTransformations\XslTransformationTests\TransformXml.cs" />
@@ -156,6 +157,13 @@
     </Content>
     <Content Include="XslTransformations\PlainXmlFormatMergeTests\ItalicSource.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\PlainXmlToUbbTests\ParagraphResult.txt">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XslTransformations\PlainXmlToUbbTests\ParagraphSource.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="XslTransformations\XslTransformationTests\TextResult.txt">

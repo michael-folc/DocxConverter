@@ -27,6 +27,7 @@ namespace DocxConverter.XslTransformations
       var compiledXslt = xsltCompiler.Compile (xslt.CreateReader());
 
       _transformer = compiledXslt.Load();
+      _transformer.SetParameter (new QName ("", "", "newline"), new XdmAtomicValue (Environment.NewLine));
     }
 
     public XDocument TransformXml (XDocument source)
