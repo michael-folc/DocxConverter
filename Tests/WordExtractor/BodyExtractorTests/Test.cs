@@ -45,13 +45,18 @@ namespace Tests.WordExtractor.BodyExtractorTests
     }
 
     [Test]
+    public void AcceptParagraphWithTextInsertion ()
+    {
+      AssertGetBody (MethodBase.GetCurrentMethod ());
+    }
+
+    [Test]
     public void AcceptParagraphInsertion ()
     {
       AssertGetBody (MethodBase.GetCurrentMethod ());
     }
 
     [Test]
-    [Ignore]
     public void AcceptMultipleRunInsertion ()
     {
       AssertGetBody (MethodBase.GetCurrentMethod ());

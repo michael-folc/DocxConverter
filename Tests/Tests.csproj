@@ -67,6 +67,9 @@
     <Content Include="WordExtractor\BodyExtractorTests\AcceptParagraphInsertionResult.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WordExtractor\BodyExtractorTests\AcceptParagraphWithTextInsertionResult.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="WordExtractor\BodyExtractorTests\AcceptTextFormatChangeResult.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -277,6 +280,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="WordExtractor\BodyExtractorTests\AcceptParagraphInsertionSource.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WordExtractor\BodyExtractorTests\AcceptParagraphWithTextInsertionSource.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="WordExtractor\BodyExtractorTests\AcceptTextFormatChangeSource.docx">
