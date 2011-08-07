@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Tests.XslTransformations.PlainXmlFormatMergeTests
 {
   [TestFixture]
-  public class Test : TestBase
+  public class Test : XslTransformationsTestBase
   {
     protected override XslTransformation CreateXslTransformation ()
     {

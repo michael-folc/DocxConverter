@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Tests.XslTransformations.XslTransformationTests
 {
   [TestFixture]
-  public class TransformText : TestBase
+  public class TransformText : XslTransformationsTestBase
   {
     protected override XslTransformation CreateXslTransformation ()
     {
