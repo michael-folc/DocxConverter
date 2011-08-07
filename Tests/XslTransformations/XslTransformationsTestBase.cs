@@ -24,13 +24,7 @@ namespace Tests.XslTransformations
       var source = GetSourceXml (currentMethod);
       var expected = GetResultXml (currentMethod);
       var actual = _transformation.TransformXml (source);
-      using (var actualReader = actual.CreateReader())
-      {
-        using (var expectedReader = expected.CreateReader())
-        {
-          Assert.That (actualReader, IsXml.EquivalentTo (expectedReader));
-        }
-      }
+      AssertXDocument (actual, expected);
     }
 
     protected void AssertTransformText (MethodBase currentMethod)

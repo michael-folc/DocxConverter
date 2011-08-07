@@ -80,20 +80,14 @@ namespace Tests.WordExtractor.BodyExtractorTests
     private void AssertGetBody (MethodBase currentMethod)
     {
       XDocument actual;
-      using (WordprocessingDocument document = WordprocessingDocument.Open (GetSourceFileName (currentMethod), true))
+      using (WordprocessingDocument document = WordprocessingDocument.Open (GetSourceFileName (currentMethod), false))
       {
         actual = _bodyExtractor.GetBody (document);
       }
 
-      XDocument expected = XDocument.Load (GetResultFileName (currentMethod));
+      var expected = XDocument.Load (GetResultFileName (currentMethod));
 
-      using (var actualReader = actual.CreateReader())
-      {
-        using (var expectedReader = expected.CreateReader())
-        {
-          Assert.That (actualReader, IsXml.EquivalentTo (expectedReader));
-        }
-      }
+      AssertXDocument(actual, expected);
     }
 
     private string GetSourceFileName (MethodBase currentMethod)

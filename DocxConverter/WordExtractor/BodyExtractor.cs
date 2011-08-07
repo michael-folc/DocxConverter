@@ -18,6 +18,7 @@ namespace DocxConverter.WordExtractor
     public XDocument GetBody (WordprocessingDocument document)
     {
       HandleFormatChanges (document.MainDocumentPart);
+      HandleDeletions (document.MainDocumentPart);
       HandleInsertions (document.MainDocumentPart);
 
       using (var xmlReader = XmlReader.Create (document.MainDocumentPart.GetStream()))
@@ -35,6 +36,17 @@ namespace DocxConverter.WordExtractor
 
       foreach (var change in changes)
         change.Remove();
+    }
+
+    private void HandleDeletions (MainDocumentPart mainDocumentPart)
+    {
+      var body = mainDocumentPart.Document.Body;
+      var deletions = new List<OpenXmlElement> ();
+      //deletions.AddRange (body.Descendants<Deleted> ().Cast<OpenXmlElement> ());
+      //deletions.AddRange (body.Descendants<DeletedRun> ().Cast<OpenXmlElement> ());
+
+      foreach (var deletion in deletions)
+        deletion.Remove ();
     }
 
     private void HandleInsertions (MainDocumentPart mainDocumentPart)

@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Xml.Linq;
+using Jolt.Testing.Assertions.NUnit.SyntaxHelpers;
 using NUnit.Framework;
 
 namespace Tests
@@ -22,6 +24,17 @@ namespace Tests
       Assert.That (File.Exists (fullPath), "File not found: {0}", fullPath);
 
       return fullPath;
+    }
+
+    protected void AssertXDocument (XDocument actual, XDocument expected)
+    {
+      using (var actualReader = actual.CreateReader())
+      {
+        using (var expectedReader = expected.CreateReader())
+        {
+          Assert.That (actualReader, IsXml.EquivalentTo (expectedReader));
+        }
+      }
     }
   }
 }
