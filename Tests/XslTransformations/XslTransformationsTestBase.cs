@@ -2,7 +2,6 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
 using DocxConverter.XslTransformations;
-using Jolt.Testing.Assertions.NUnit.SyntaxHelpers;
 using NUnit.Framework;
 
 namespace Tests.XslTransformations

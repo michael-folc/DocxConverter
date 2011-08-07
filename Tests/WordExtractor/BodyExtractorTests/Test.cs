@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
 using DocxConverter.WordExtractor;
-using Jolt.Testing.Assertions.NUnit.SyntaxHelpers;
 using NUnit.Framework;
 
 namespace Tests.WordExtractor.BodyExtractorTests
