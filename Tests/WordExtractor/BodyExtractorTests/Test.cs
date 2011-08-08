@@ -27,54 +27,52 @@ namespace Tests.WordExtractor.BodyExtractorTests
     [Test]
     public void AcceptTextFormatChange ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
-    [Ignore]
     public void AcceptParagraphFormatChange ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void AcceptTextInsertion ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void AcceptParagraphWithTextInsertion ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void AcceptParagraphInsertion ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     public void AcceptMultipleRunInsertion ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     [Ignore]
     public void RejectTable ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
 
     [Test]
     [Ignore]
-    public void RejectMath()
+    public void RejectMath ()
     {
-      AssertGetBody (MethodBase.GetCurrentMethod ());
+      AssertGetBody (MethodBase.GetCurrentMethod());
     }
-
 
     private void AssertGetBody (MethodBase currentMethod)
     {
@@ -86,7 +84,7 @@ namespace Tests.WordExtractor.BodyExtractorTests
 
       var expected = XDocument.Load (GetResultFileName (currentMethod));
 
-      AssertXDocument(actual, expected);
+      AssertXDocument (actual, expected);
     }
 
     private string GetSourceFileName (MethodBase currentMethod)

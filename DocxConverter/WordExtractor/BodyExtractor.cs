@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocxConverter.Utilities;
 
 namespace DocxConverter.WordExtractor
 {
@@ -15,32 +17,52 @@ namespace DocxConverter.WordExtractor
     {
     }
 
-    public XDocument GetBody (WordprocessingDocument document)
+    public XDocument GetBody (WordprocessingDocument wordprocessingDocument)
     {
-      HandleFormatChanges (document.MainDocumentPart);
-      HandleDeletions (document.MainDocumentPart);
-      HandleInsertions (document.MainDocumentPart);
+      ArgumentUtility.CheckNotNull ("wordprocessingDocument", wordprocessingDocument);
 
-      using (var xmlReader = XmlReader.Create (document.MainDocumentPart.GetStream()))
+      var document = GetDocument (wordprocessingDocument);
+
+      HandleFormatChanges (document);
+      HandleDeletions (document);
+      HandleInsertions (document);
+
+      return GetXDocument (document);
+    }
+
+    private Document GetDocument (WordprocessingDocument wordprocessingDocument)
+    {
+      var document = new Document ();
+      document.Load (wordprocessingDocument.MainDocumentPart);
+      return document;
+    }
+
+    private XDocument GetXDocument (Document document)
+    {
+      using (var writeStream = new MemoryStream())
       {
-        var xDocument = XDocument.Load (xmlReader);
-        return xDocument;
+        document.Save (writeStream);
+        using (var readStream = new MemoryStream (writeStream.GetBuffer()))
+        {
+          return XDocument.Load (readStream);
+        }
       }
     }
 
-    private void HandleFormatChanges (MainDocumentPart mainDocumentPart)
+    private void HandleFormatChanges (Document document)
     {
-      var body = mainDocumentPart.Document.Body;
-      var changes = body.Descendants<RunPropertiesChange>().ToList();
-      //var changes = body.Descendants<ParagraphPropertiesChange> ().ToList ();
+      var body = document.Body;
+      var changes = new List<OpenXmlElement> ();
+      changes.AddRange (body.Descendants<RunPropertiesChange>().Cast<OpenXmlElement>());
+      changes.AddRange (body.Descendants<ParagraphPropertiesChange>().Cast<OpenXmlElement>());
 
       foreach (var change in changes)
         change.Remove();
     }
 
-    private void HandleDeletions (MainDocumentPart mainDocumentPart)
+    private void HandleDeletions (Document document)
     {
-      var body = mainDocumentPart.Document.Body;
+      var body = document.Body;
       var deletions = new List<OpenXmlElement> ();
       //deletions.AddRange (body.Descendants<Deleted> ().Cast<OpenXmlElement> ());
       //deletions.AddRange (body.Descendants<DeletedRun> ().Cast<OpenXmlElement> ());
@@ -49,9 +71,9 @@ namespace DocxConverter.WordExtractor
         deletion.Remove ();
     }
 
-    private void HandleInsertions (MainDocumentPart mainDocumentPart)
+    private void HandleInsertions (Document document)
     {
-      var body = mainDocumentPart.Document.Body;
+      var body = document.Body;
       var insertions = new List<OpenXmlElement>();
       insertions.AddRange (body.Descendants<Inserted>().Cast<OpenXmlElement>());
       insertions.AddRange (body.Descendants<InsertedRun>().Cast<OpenXmlElement>());

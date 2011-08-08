@@ -64,6 +64,9 @@
     <Content Include="WordExtractor\BodyExtractorTests\AcceptMultipleRunInsertionResult.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WordExtractor\BodyExtractorTests\AcceptParagraphFormatChangeResult.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="WordExtractor\BodyExtractorTests\AcceptParagraphInsertionResult.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -277,6 +280,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="WordExtractor\BodyExtractorTests\AcceptMultipleRunInsertionSource.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WordExtractor\BodyExtractorTests\AcceptParagraphFormatChangeSource.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="WordExtractor\BodyExtractorTests\AcceptParagraphInsertionSource.docx">
