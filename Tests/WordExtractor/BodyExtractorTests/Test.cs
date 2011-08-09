@@ -79,6 +79,12 @@ namespace Tests.WordExtractor.BodyExtractorTests
     }
 
     [Test]
+    public void AcceptMultipleParagraphDeletions ()
+    {
+      AssertGetBody (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
     [Ignore]
     public void RejectTable ()
     {
