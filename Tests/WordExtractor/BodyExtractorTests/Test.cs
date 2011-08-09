@@ -61,6 +61,24 @@ namespace Tests.WordExtractor.BodyExtractorTests
     }
 
     [Test]
+    public void AcceptTextDeletion ()
+    {
+      AssertGetBody (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
+    public void AcceptParagraphWithTextDeletion ()
+    {
+      AssertGetBody (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
+    public void AcceptParagraphDeletion ()
+    {
+      AssertGetBody (MethodBase.GetCurrentMethod());
+    }
+
+    [Test]
     [Ignore]
     public void RejectTable ()
     {

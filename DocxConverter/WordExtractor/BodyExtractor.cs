@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
@@ -32,7 +31,7 @@ namespace DocxConverter.WordExtractor
 
     private Document GetDocument (WordprocessingDocument wordprocessingDocument)
     {
-      var document = new Document ();
+      var document = new Document();
       document.Load (wordprocessingDocument.MainDocumentPart);
       return document;
     }
@@ -52,7 +51,7 @@ namespace DocxConverter.WordExtractor
     private void HandleFormatChanges (Document document)
     {
       var body = document.Body;
-      var changes = new List<OpenXmlElement> ();
+      var changes = new List<OpenXmlElement>();
       changes.AddRange (body.Descendants<RunPropertiesChange>().Cast<OpenXmlElement>());
       changes.AddRange (body.Descendants<ParagraphPropertiesChange>().Cast<OpenXmlElement>());
 
@@ -63,12 +62,28 @@ namespace DocxConverter.WordExtractor
     private void HandleDeletions (Document document)
     {
       var body = document.Body;
-      var deletions = new List<OpenXmlElement> ();
-      //deletions.AddRange (body.Descendants<Deleted> ().Cast<OpenXmlElement> ());
-      //deletions.AddRange (body.Descendants<DeletedRun> ().Cast<OpenXmlElement> ());
 
+      var deletedRuns = body.Descendants<DeletedRun>().ToList();
+      foreach (var deletion in deletedRuns)
+        deletion.Remove();
+
+      var deletions = body.Descendants<Deleted>().ToList();
       foreach (var deletion in deletions)
-        deletion.Remove ();
+      {
+        var paragraph = deletion.Ancestors<Paragraph>().Single();
+        var runs = paragraph.Descendants<Run>().ToList();
+        if (runs.Any())
+        {
+          var nextParagraph = paragraph.NextSibling<Paragraph>();
+          if (nextParagraph == null)
+            throw new InvalidOperationException ("Document structure is invalid. The last paragraph of a document cannot be deleted");
+          var firstRunOfNextParagraph = nextParagraph.GetFirstChild<Run>();
+          foreach (var run in runs)
+            firstRunOfNextParagraph.InsertBeforeSelf (run.CloneNode (true));
+        }
+
+        paragraph.Remove();
+      }
     }
 
     private void HandleInsertions (Document document)
@@ -81,7 +96,7 @@ namespace DocxConverter.WordExtractor
       foreach (var insertion in insertions)
       {
         foreach (var run in insertion.Elements<Run>())
-          insertion.InsertBeforeSelf(run.CloneNode (true));
+          insertion.InsertBeforeSelf (run.CloneNode (true));
 
         insertion.Remove();
       }
